@@ -13,7 +13,8 @@ import java.util.List;
 import helpers.IntentUtil;
 import model.Quote;
 import model.Services.IQuotesDataLoader;
-import model.Services.StaticQuotesDataLoader;
+import model.Services.JsonQuotesDataLoader;
+import model.Services.RawJsonProvider;
 
 public class QuoteListActivity extends AppCompatActivity {
 
@@ -29,7 +30,7 @@ public class QuoteListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote_list);
-        quotesDataLoader = new StaticQuotesDataLoader();
+        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new RawJsonProvider());
         initUI();
     }
 
