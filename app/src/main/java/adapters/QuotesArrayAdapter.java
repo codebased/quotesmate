@@ -14,9 +14,6 @@ import java.util.List;
 
 import model.Quote;
 
-/**
- * Created by codebased on 13/07/16.
- */
 public class QuotesArrayAdapter extends ArrayAdapter<Quote> {
 
     private final LayoutInflater inflater;
@@ -35,12 +32,20 @@ public class QuotesArrayAdapter extends ArrayAdapter<Quote> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        // TODO Auto-generated method stub
-        Holder holder = new Holder();
-        View rowView;
-        rowView = inflater.inflate(R.layout.quote_list_item, null);
-        holder.tv = (TextView) rowView.findViewById(R.id.textView1);
-        holder.img = (ImageView) rowView.findViewById(R.id.imageView1);
+
+        Holder holder;
+        if (convertView == null) {
+            holder = new Holder();
+            convertView = inflater.inflate(R
+                    .layout.quote_list_item, null);
+            convertView.setTag(holder);
+        } else {
+            holder = (Holder) convertView.getTag();
+        }
+
+
+        holder.tv = (TextView) convertView.findViewById(R.id.textView1);
+        holder.img = (ImageView) convertView.findViewById(R.id.imageView1);
         holder.tv.setText(getItem(position).getQuote());
 //        rowView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -49,6 +54,29 @@ public class QuotesArrayAdapter extends ArrayAdapter<Quote> {
 //                Toast.makeText(getContext(), "You Clicked " + getItem(position).getQuote(), Toast.LENGTH_LONG).show();
 //            }
 //        });
-        return rowView;
+
+        return convertView;
     }
+
+//    @Override
+//    public View getView(final int position, View convertView, ViewGroup parent) {
+//
+//
+//        Holder holder;
+//        holder = new Holder();
+//        convertView = inflater.inflate(R.layout.quote_list_item, null);
+//
+//        holder.tv = (TextView) convertView.findViewById(R.id.textView1);
+//        holder.img = (ImageView) convertView.findViewById(R.id.imageView1);
+//        holder.tv.setText(getItem(position).getQuote());
+////        rowView.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                // TODO Auto-generated method stub
+////                Toast.makeText(getContext(), "You Clicked " + getItem(position).getQuote(), Toast.LENGTH_LONG).show();
+////            }
+////        });
+//
+//        return convertView;
+//    }
 }
