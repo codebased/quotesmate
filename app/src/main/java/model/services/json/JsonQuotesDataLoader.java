@@ -1,4 +1,4 @@
-package model.Services;
+package model.services.json;
 
 import android.content.Context;
 
@@ -7,9 +7,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Quote;
+import model.services.IQuotesDataLoader;
+import model.services.json.provider.IJsonProvider;
 
 /**
  * Created by codebased on 13/07/16.
@@ -26,12 +27,16 @@ public class JsonQuotesDataLoader implements IQuotesDataLoader {
     }
 
     @Override
-    public List<Quote> getAll() {
-        String rawJson = this.jsonProvider.getJson(context);
+    public ArrayList<Quote> getAll() {
 
+        return processJson(this.jsonProvider.getJson(context));
+    }
+
+
+    private ArrayList<Quote> processJson(String result) {
         JSONObject jObject = null;
         try {
-            jObject = new JSONObject(rawJson);
+            jObject = new JSONObject(result);
 
             JSONArray jArray = jObject.getJSONArray("quotes");
 
@@ -49,8 +54,23 @@ public class JsonQuotesDataLoader implements IQuotesDataLoader {
             e.printStackTrace();
         }
 
-
         return null;
+    }
 
+
+    @Override
+    public void getAllAsync(final DataCallback<ArrayList<Quote>> callback) {
+        this.jsonProvider.getJsonAsync(context, new DataCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                callback.onSuccess(processJson(result));
+
+            }
+
+            @Override
+            public void onFailure(String reason) {
+
+            }
+        });
     }
 }
