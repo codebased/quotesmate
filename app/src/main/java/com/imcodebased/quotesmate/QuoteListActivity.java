@@ -3,9 +3,11 @@ package com.imcodebased.quotesmate;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -44,7 +46,24 @@ public class QuoteListActivity extends AppCompatActivity {
 
         quotes = quotesDataLoader.getAll();
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, quotes);
+        // ahh the moment you have created a new Array... and override, it has created an anonymous class
+        // for you thus the below is same as saying:
+        // MyAdapter extends ArrayAdapter...
+        adapter = new ArrayAdapter<Quote>(this, android.R.layout.simple_list_item_2, android.R.id.text1
+                , quotes) {
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View view = super.getView(position, convertView, parent);
+                TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+
+                text1.setText(quotes.get(position).getQuote());
+                text2.setText(quotes.get(position).getAuthor());
+                return view;
+            }
+        };
+
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
