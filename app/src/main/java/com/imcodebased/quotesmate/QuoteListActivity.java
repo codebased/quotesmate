@@ -1,7 +1,10 @@
 package com.imcodebased.quotesmate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.AdapterView;
@@ -83,5 +86,20 @@ public class QuoteListActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         ViewStub emptyViewStub = (ViewStub) findViewById(R.id.empty);
         listView.setEmptyView(emptyViewStub);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.quote_list_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.newquote) {
+            Intent newQuoteIntent = new Intent(this, NewQuoteActivity.class);
+            startActivity(newQuoteIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -8,14 +8,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity
-            android:name=".QuoteListActivity"
-            >
+        <activity android:name=".QuoteListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NewQuoteActivity" android:label="New Quote" />
     </application>
 
 </manifest>
