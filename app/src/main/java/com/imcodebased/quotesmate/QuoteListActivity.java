@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 
 import adapters.ItemClickedCallback;
 import adapters.QuotesRecyclerAdapter;
+import customviews.CustomRecyclerView;
 import helpers.IntentUtil;
 import model.Quote;
 import model.services.IQuotesDataLoader;
@@ -21,7 +21,7 @@ import model.services.json.provider.RawJsonProvider;
 
 public class QuoteListActivity extends AppCompatActivity {
 
-    private RecyclerView listView;
+    private CustomRecyclerView listView;
 
     private ArrayList<Quote> quotes;
 
@@ -67,6 +67,7 @@ public class QuoteListActivity extends AppCompatActivity {
 // adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
 //                        .layout.quote_list_item, new ArrayList<Quote>());
 
+                listView.setEmtpyStateView(findViewById(R.id.empty));
                 listView.setLayoutManager(new LinearLayoutManager(QuoteListActivity.this));
                 listView.setHasFixedSize(false);
                 listView.setAdapter(adapter);
@@ -91,7 +92,7 @@ public class QuoteListActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        listView = (RecyclerView) findViewById(R.id.listView);
+        listView = (CustomRecyclerView) findViewById(R.id.listView);
 //        ViewStub emptyViewStub = (ViewStub) findViewById(R.id.empty);
 //        listView.setEmptyView(emptyViewStub);
     }
