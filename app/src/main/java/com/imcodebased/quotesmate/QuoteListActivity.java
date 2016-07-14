@@ -52,7 +52,8 @@ public class QuoteListActivity extends AppCompatActivity {
                 // ahh the moment you have created a new Array... and override, it has created an anonymous class
                 // for you thus the below is same as saying:
                 // MyAdapter extends ArrayAdapter...
-                adapter = new QuotesArrayAdapter(QuoteListActivity.this, 0, quotes) ;
+                adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+                        .layout.quote_list_item, quotes) ;
 
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
