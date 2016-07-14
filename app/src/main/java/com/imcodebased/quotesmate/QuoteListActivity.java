@@ -3,6 +3,7 @@ package com.imcodebased.quotesmate;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewStub;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -53,7 +54,11 @@ public class QuoteListActivity extends AppCompatActivity {
                 // for you thus the below is same as saying:
                 // MyAdapter extends ArrayAdapter...
                 adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
-                        .layout.quote_list_item, quotes) ;
+                        .layout.quote_list_item, quotes);
+//
+//                make it empty
+// adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+//                        .layout.quote_list_item, new ArrayList<Quote>());
 
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,5 +81,7 @@ public class QuoteListActivity extends AppCompatActivity {
 
     private void initUI() {
         listView = (ListView) findViewById(R.id.listView);
+        ViewStub emptyViewStub = (ViewStub) findViewById(R.id.empty);
+        listView.setEmptyView(emptyViewStub);
     }
 }
