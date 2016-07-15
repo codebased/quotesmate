@@ -8,18 +8,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.List;
+import java.util.ArrayList;
 
+import adapters.QuotesArrayAdapter;
 import helpers.IntentUtil;
 import model.Quote;
-import model.Services.IQuotesDataLoader;
-import model.Services.StaticQuotesDataLoader;
+import model.services.IQuotesDataLoader;
+import model.services.json.DataCallback;
+import model.services.json.JsonQuotesDataLoader;
+import model.services.json.provider.RawJsonProvider;
 
 public class QuoteListActivity extends AppCompatActivity {
 
     private ListView listView;
 
-    private List<Quote> quotes;
+    private ArrayList<Quote> quotes;
 
     private ArrayAdapter<Quote> adapter;
 
@@ -29,7 +32,7 @@ public class QuoteListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote_list);
-        quotesDataLoader = new StaticQuotesDataLoader();
+        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new RawJsonProvider());
         initUI();
     }
 
@@ -41,17 +44,34 @@ public class QuoteListActivity extends AppCompatActivity {
 
     private void initData() {
 
-        quotes = quotesDataLoader.getAll();
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, quotes);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        quotesDataLoader.getAllAsync(new DataCallback<ArrayList<Quote>>() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(QuoteListActivity.this, quotes.get(position).toString(), Toast.LENGTH_LONG).show();
-                startActivity(IntentUtil.createShareIntent(quotes.get(position).toString()));
+            public void onSuccess(ArrayList<Quote> result) {
+
+                quotes = result;
+                // ahh the moment you have created a new Array... and override, it has created an anonymous class
+                // for you thus the below is same as saying:
+                // MyAdapter extends ArrayAdapter...
+                adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+                        .layout.quote_list_item, quotes) ;
+
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(QuoteListActivity.this, quotes.get(position).toString(), Toast.LENGTH_LONG).show();
+                        startActivity(IntentUtil.createShareIntent(quotes.get(position).toString()));
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(String error) {
+
             }
         });
+
+
     }
 
     private void initUI() {

@@ -1,0 +1,904 @@
+{
+  "quotes": [
+    {
+      "id": 269861,
+      "quote": "People living deeply have no fear of death.",
+      "author": "Anais Nin",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269862,
+      "quote": "A well-spent day brings happy sleep.",
+      "author": "Leonardo da Vinci",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269863,
+      "quote": "Fortunately analysis is not the only way to resolve inner conflicts. Life itself still remains a very effective therapist.",
+      "author": "Karen Horney",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269864,
+      "quote": "Life in abundance comes only through great love.",
+      "author": "Elbert Hubbard",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269865,
+      "quote": "The greatest discovery of my generation is that a human being can alter his life by altering his attitudes.",
+      "author": "William James",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269866,
+      "quote": "What is important in life is life, and not the result of life.",
+      "author": "Johann Wolfgang von Goethe",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269867,
+      "quote": "You have succeeded in life when all you really want is only what you really need.",
+      "author": "Vernon Howard",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269868,
+      "quote": "An aim in life is the only fortune worth finding.",
+      "author": "Robert Louis Stevenson",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269869,
+      "quote": "I look back on my life like a good day's work, it was done and I am satisfied with it.",
+      "author": "Grandma Moses",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269870,
+      "quote": "While there's life, there's hope.",
+      "author": "Marcus Tullius Cicero",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269871,
+      "quote": "Get correct views of life, and learn to see the world in its true light. It will enable you to live pleasantly, to do good, and, when summoned away, to leave without regret.",
+      "author": "Robert E. Lee",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269872,
+      "quote": "Life is a long lesson in humility.",
+      "author": "James M. Barrie",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269873,
+      "quote": "Life is half spent before we know what it is.",
+      "author": "George Herbert",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269874,
+      "quote": "Life must be lived as play.",
+      "author": "Plato",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269875,
+      "quote": "Maybe all one can do is hope to end up with the right regrets.",
+      "author": "Arthur Miller",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269876,
+      "quote": "There is only one difference between a long life and a good dinner: that, in the dinner, the sweets come last.",
+      "author": "Robert Louis Stevenson",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269877,
+      "quote": "One way to get the most out of life is to look upon it as an adventure.",
+      "author": "William Feather",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269878,
+      "quote": "Kindness, I've discovered, is everything in life.",
+      "author": "Isaac Bashevis Singer",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269879,
+      "quote": "Unbeing dead isn't being alive.",
+      "author": "e. e. cummings",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269880,
+      "quote": "To change ones life: Start immediately. Do it flamboyantly.",
+      "author": "William James",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269881,
+      "quote": "Life appears to me too short to be spent in nursing animosity, or registering wrongs.",
+      "author": "Charlotte Bronte",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269882,
+      "quote": "This life is worth living, we can say, since it is what we make it.",
+      "author": "William James",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269883,
+      "quote": "Life is pleasant. Death is peaceful. It's the transition that's troublesome.",
+      "author": "Isaac Asimov",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269884,
+      "quote": "The purpose of life is a life of purpose.",
+      "author": "Robert Byrne",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269885,
+      "quote": "We are all here for a spell, get all the good laughs you can.",
+      "author": "Will Rogers",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269886,
+      "quote": "The greatest pleasure of life is love.",
+      "author": "Euripides",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269887,
+      "quote": "The great use of life is to spend it for something that will outlast it.",
+      "author": "William James",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269888,
+      "quote": "Our business in life is not to succeed, but to continue to fail in good spirits.",
+      "author": "Robert Louis Stevenson",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269889,
+      "quote": "The good life is one inspired by love and guided by knowledge.",
+      "author": "Bertrand Russell",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269890,
+      "quote": "While we are postponing, life speeds by.",
+      "author": "Lucius Annaeus Seneca",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269891,
+      "quote": "There is just one life for each of us: our own.",
+      "author": "Euripides",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269892,
+      "quote": "The basic fact about human existence is not that it is a tragedy, but that it is a bore. It is not so much a war as an endless standing in line.",
+      "author": "H. L. Mencken",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269893,
+      "quote": "A chain is no stronger than its weakest link, and life is after all a chain.",
+      "author": "William James",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269894,
+      "quote": "Life is never easy for those who dream.",
+      "author": "Robert James Waller",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269895,
+      "quote": "Life is too short to work so hard.",
+      "author": "Vivien Leigh",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269896,
+      "quote": "The chief danger in life is that you may take too many precautions.",
+      "author": "Alfred Adler",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269897,
+      "quote": "We are here to add what we can to life, not to get what we can from life.",
+      "author": "William Osler",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269898,
+      "quote": "For the happiest life, days should be rigorously planned, nights left open to chance.",
+      "author": "Mignon McLaughlin",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269899,
+      "quote": "Life well spent is long.",
+      "author": "Leonardo da Vinci",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269900,
+      "quote": "If you live long enough, you'll make mistakes. But if you learn from them, you'll be a better person. It's how you handle adversity, not how it affects you. The main thing is never quit, never quit, never quit.",
+      "author": "William J. Clinton",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269901,
+      "quote": "Life is something to do when you can't get to sleep.",
+      "author": "Fran Lebowitz",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269902,
+      "quote": "Life isn't a matter of milestones, but of moments.",
+      "author": "Rose Kennedy",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269903,
+      "quote": "We can't plan life. All we can do is be available for it.",
+      "author": "Lauryn Hill",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269904,
+      "quote": "Life will always be to a large extent what we ourselves make it.",
+      "author": "Samuel Smiles",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269905,
+      "quote": "Life is wasted on the living.",
+      "author": "Douglas Adams",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269906,
+      "quote": "Life has meaning only if one barters it day by day for something other than itself.",
+      "author": "Antoine de Saint-Exupery",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269907,
+      "quote": "The art of life is to know how to enjoy a little and to endure very much.",
+      "author": "William Hazlitt",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269908,
+      "quote": "The most exhausting thing in life is being insincere.",
+      "author": "Anne Morrow Lindbergh",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269909,
+      "quote": "The main facts in human life are five: birth, food, sleep, love and death.",
+      "author": "E. M. Forster",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269910,
+      "quote": "Life is a succession of moments, to live each one is to succeed.",
+      "author": "Corita Kent",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269911,
+      "quote": "There is no wealth but life.",
+      "author": "John Ruskin",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269912,
+      "quote": "Life is largely a matter of expectation.",
+      "author": "Horace",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269913,
+      "quote": "Give me the luxuries of life and I will willingly do without the necessities.",
+      "author": "Frank Lloyd Wright",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269914,
+      "quote": "The indispensable first step to getting the things you want out of life is this: decide what you want.",
+      "author": "Ben Stein",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269915,
+      "quote": "I take a simple view of life. It is keep your eyes open and get on with it.",
+      "author": "Laurence Sterne",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269916,
+      "quote": "Seventy percent of success in life is showing up.",
+      "author": "Woody Allen",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269917,
+      "quote": "Life is not an exact science, it is an art.",
+      "author": "Samuel Butler",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269918,
+      "quote": "Every man regards his own life as the New Year's Eve of time.",
+      "author": "Jean Paul",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269919,
+      "quote": "To live is so startling it leaves little time for anything else.",
+      "author": "Emily Dickinson",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269920,
+      "quote": "What a wonderful life I've had! I only wish I'd realized it sooner.",
+      "author": "Sidonie Gabrielle Colette",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269921,
+      "quote": "Life is like a trumpet - if you don't put anything into it, you don't get anything out of it.",
+      "author": "William Christopher Handy",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269923,
+      "quote": "No man is a failure who is enjoying life.",
+      "author": "William Feather",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269924,
+      "quote": "The man who has no inner-life is a slave to his surroundings.",
+      "author": "Henri Frederic Amiel",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269925,
+      "quote": "Wrong life cannot be lived rightly.",
+      "author": "Theodor Adorno",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269926,
+      "quote": "Life is the art of drawing sufficient conclusions from insufficient premises.",
+      "author": "Samuel Butler",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269927,
+      "quote": "Life is anything that dies when you stomp on it.",
+      "author": "Dave Barry",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269928,
+      "quote": "My life is every moment of my life. It is not a culmination of the past.",
+      "author": "Hugh Leonard",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269929,
+      "quote": "Life is a moderately good play with a badly written third act.",
+      "author": "Truman Capote",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269930,
+      "quote": "To me, if life boils down to one thing, it's movement. To live is to keep moving.",
+      "author": "Jerry Seinfeld",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269931,
+      "quote": "I did not direct my life. I didn't design it. I never made decisions. Things always came up and made them for me. That's what life is.",
+      "author": "B. F. Skinner",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269932,
+      "quote": "Human life is as evanescent as the morning dew or a flash of lightning.",
+      "author": "Samuel Butler",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269933,
+      "quote": "To live is to change, and to be perfect is to have changed often.",
+      "author": "John Henry Newman",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269934,
+      "quote": "Our entire life - consists ultimately in accepting ourselves as we are.",
+      "author": "Jean Anouilh",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269935,
+      "quote": "To know nothing is the happiest life.",
+      "author": "Desiderius Erasmus",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269936,
+      "quote": "To be free is to have achieved your life.",
+      "author": "Tennessee Williams",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269937,
+      "quote": "Variety's the very spice of life, That gives it all its flavor.",
+      "author": "William Cowper",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269938,
+      "quote": "You don't have to be the Dalai Lama to tell people that life's about change.",
+      "author": "John Cleese",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269939,
+      "quote": "Life is but thought.",
+      "author": "Sara Teasdale",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269940,
+      "quote": "Life itself is the proper binge.",
+      "author": "Julia Child",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269941,
+      "quote": "The whole secret of life is to be interested in one thing profoundly and in a thousand things well.",
+      "author": "Horace Walpole",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269942,
+      "quote": "Wars and elections are both too big and too small to matter in the long run. The daily work - that goes on, it adds up.",
+      "author": "Barbara Kingsolver",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269943,
+      "quote": "Life is a culmination of the past, an awareness of the present, an indication of a future beyond knowledge, the quality that gives a touch of divinity to matter.",
+      "author": "Charles Lindbergh",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269944,
+      "quote": "The less routine the more life.",
+      "author": "Amos Bronson Alcott",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269945,
+      "quote": "Life is much shorter than I imagined it to be.",
+      "author": "Abraham Cahan",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269946,
+      "quote": "Life ought to be a struggle of desire toward adventures whose nobility will fertilize the soul.",
+      "author": "Rebecca West",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269947,
+      "quote": "The Indian Summer of life should be a little sunny and a little sad, like the season, and infinite in wealth and depth of tone, but never hustled.",
+      "author": "Henry Adams",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269948,
+      "quote": "Any life is made up of a single moment, the moment in which a man finds out, once and for all, who he is.",
+      "author": "Jorge Luis Borges",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269949,
+      "quote": "What we play is life.",
+      "author": "Louis Armstrong",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269950,
+      "quote": "Life is a great sunrise. I do not see why death should not be an even greater one.",
+      "author": "Vladimir Nabokov",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269951,
+      "quote": "Life is made up of sobs, sniffles, and smiles, with sniffles predominating.",
+      "author": "O. Henry",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269952,
+      "quote": "Not a shred of evidence exists in favor of the idea that life is serious.",
+      "author": "Brendan Gill",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269953,
+      "quote": "The fear of life is the favorite disease of the 20th century.",
+      "author": "William Lyon Phelps",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269954,
+      "quote": "Life has a higher end, than to be amused.",
+      "author": "William Ellery Channing",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269955,
+      "quote": "The person lives twice who lives the first life well.",
+      "author": "Robert Herrick",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269956,
+      "quote": "Unrest of spirit is a mark of life.",
+      "author": "Karl A. Menninger",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269957,
+      "quote": "Life itself still remains a very effective therapist.",
+      "author": "Karen Horney",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269958,
+      "quote": "Life is a lot like jazz... it's best when you improvise.",
+      "author": "George Gershwin",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269959,
+      "quote": "I have inspiration and feelings of being alive most every day I live.",
+      "author": "Judy Collins",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269960,
+      "quote": "I had no blood relatives till I made some.",
+      "author": "Andy Dick",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    },
+    {
+      "id": 269961,
+      "quote": "Keep love in your heart. A life without it is like a sunless garden when the flowers are dead.",
+      "author": "Oscar Wilde",
+      "genre": "life",
+      "tag": null,
+      "createdAt": "2016-04-16T13:13:36.928Z",
+      "updatedAt": "2016-04-16T13:13:36.928Z"
+    }
+  ]
+}

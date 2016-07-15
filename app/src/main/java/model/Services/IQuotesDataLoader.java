@@ -1,9 +1,15 @@
-package model.Services;
+package model.services;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import model.Quote;
+import model.services.json.DataCallback;
 
 public interface IQuotesDataLoader {
-     List<Quote> getAll();
+
+    ArrayList<Quote> getAll();
+
+    void getAllAsync(DataCallback<ArrayList<Quote>> callback);
 }
+
+

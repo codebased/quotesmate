@@ -1,14 +1,26 @@
-package model.Services;
+package model.services;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Quote;
+import model.services.json.DataCallback;
 
 public class StaticQuotesDataLoader implements IQuotesDataLoader {
 
     @Override
-    public List<Quote> getAll() {
+    public ArrayList<Quote> getAll() {
+        return getData();
+    }
+
+    @Override
+    public void getAllAsync(DataCallback<ArrayList<Quote>> callback) {
+
+        ArrayList<Quote> data = getData ();
+
+        callback.onSuccess(data);
+    }
+
+    private ArrayList<Quote> getData() {
         ArrayList<Quote> quotes = new ArrayList<>();
         quotes.add(new Quote(1, "My First Quote", "Amit", "Love"));
         quotes.add(new Quote(2, "My Second Quote", "Amit", "Hate"));
