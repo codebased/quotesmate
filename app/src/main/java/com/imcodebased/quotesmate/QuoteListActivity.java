@@ -1,9 +1,11 @@
 package com.imcodebased.quotesmate;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import adapters.ItemClickedCallback;
 import adapters.QuotesRecyclerAdapter;
 import customviews.CustomRecyclerView;
+import helpers.FileLoaderTask;
 import helpers.IntentUtil;
 import model.Quote;
 import model.services.IQuotesDataLoader;
@@ -29,6 +32,8 @@ public class QuoteListActivity extends AppCompatActivity {
 
     private IQuotesDataLoader quotesDataLoader;
 
+    private ProgressDialog mProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +46,7 @@ public class QuoteListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         initData();
+
     }
 
     private void initData() {
@@ -93,6 +99,7 @@ public class QuoteListActivity extends AppCompatActivity {
 
     private void initUI() {
         listView = (CustomRecyclerView) findViewById(R.id.listView);
+        mProgressDialog = new ProgressDialog(this);
 //        ViewStub emptyViewStub = (ViewStub) findViewById(R.id.empty);
 //        listView.setEmptyView(emptyViewStub);
     }
@@ -108,6 +115,57 @@ public class QuoteListActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.newquote) {
             Intent newQuoteIntent = new Intent(this, NewQuoteActivity.class);
             startActivity(newQuoteIntent);
+        } else if (item.getItemId() == R.id.loader) {
+
+            FileLoaderTask fileLoaderTask = new FileLoaderTask(this, new FileLoaderTask.FileLoaderTaskCallback() {
+
+                @Override
+                public void onException(Exception exception) {
+                    // will run as background operation.
+                    Log.i(FileLoaderTask.TAG, String.format("onException is called by Thread ID %d", Thread.currentThread().getId()));
+                    Log.i(FileLoaderTask.TAG, String.format("onException %s", exception.toString()));
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i(FileLoaderTask.TAG, String.format("onException.runOnUiThread is called by Thread ID %d", Thread.currentThread().getId()));
+                            mProgressDialog.hide();
+                        }
+                    });
+                }
+
+                @Override
+                public void onCancel(String reason) {
+                    mProgressDialog.hide();
+
+                }
+
+                @Override
+                public void onPreExecute() {
+                    Log.i(FileLoaderTask.TAG, String.format("onPreExecute is called by Thread ID %d", Thread.currentThread().getId()));
+
+                    mProgressDialog.setMessage("Accessing Quotes database ...");
+//                    mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//                    mProgressDialog.setMax(28862);
+                    mProgressDialog.show();
+
+                }
+
+                @Override
+                public void onProgress(int on, int total) {
+//                    Log.i(FileLoaderTask.TAG, String.format("onProgress is called by Thread ID %d", Thread.currentThread().getId()));
+                    mProgressDialog.setProgress(on);
+                }
+
+                @Override
+                public void onSuccess(String result) {
+                    Log.i(FileLoaderTask.TAG, String.format("onSuccess is called by Thread ID %d", Thread.currentThread().getId()));
+
+                    mProgressDialog.hide();
+                }
+            });
+
+            fileLoaderTask.execute("");
         }
         return super.onOptionsItemSelected(item);
     }
