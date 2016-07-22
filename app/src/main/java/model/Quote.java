@@ -1,12 +1,18 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by codebased on 13/07/16.
  */
 public class Quote {
 
+//    @SerializedName("IDD")
     protected int id;
+    @Expose(serialize = false, deserialize = true)
     protected String quote;
+    @Expose(serialize = false, deserialize = true)
     protected String author;
     protected String genre;
 
