@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import adapters.ItemClickedCallback;
 import adapters.QuotesRecyclerAdapter;
@@ -20,13 +21,14 @@ import model.Quote;
 import model.services.IQuotesDataLoader;
 import model.services.json.DataCallback;
 import model.services.json.JsonQuotesDataLoader;
+import model.services.json.provider.HttpJsonProvider;
 import model.services.json.provider.RawJsonProvider;
 
 public class QuoteListActivity extends AppCompatActivity {
 
     private CustomRecyclerView listView;
 
-    private ArrayList<Quote> quotes;
+    private List<Quote> quotes;
 
     private QuotesRecyclerAdapter adapter;
 
@@ -38,7 +40,7 @@ public class QuoteListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote_list);
-        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new RawJsonProvider());
+        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new HttpJsonProvider());
         initUI();
     }
 
@@ -51,16 +53,16 @@ public class QuoteListActivity extends AppCompatActivity {
 
     private void initData() {
 
-        quotesDataLoader.getAllAsync(new DataCallback<ArrayList<Quote>>() {
+        quotesDataLoader.getAllAsync(new DataCallback<List<Quote>>() {
             @Override
-            public void onSuccess(ArrayList<Quote> result) {
+            public void onSuccess(List<Quote> result) {
 
                 quotes = result;
                 // ahh the moment you have created a new Array... and override, it has created an anonymous class
                 // for you thus the below is same as saying:
                 // MyAdapter extends ArrayAdapter...
                 // adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
-                //      .layout.quote_list_item, quotes);
+                //      .layout.list_item, quotes);
 
                 adapter = new QuotesRecyclerAdapter(quotes, new ItemClickedCallback() {
                     @Override
@@ -71,7 +73,7 @@ public class QuoteListActivity extends AppCompatActivity {
 //
 //                make it empty
 // adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
-//                        .layout.quote_list_item, new ArrayList<Quote>());
+//                        .layout.list_item, new ArrayList<Quote>());
 
                 listView.setEmtpyStateView(findViewById(R.id.empty));
                 listView.setLayoutManager(new LinearLayoutManager(QuoteListActivity.this));

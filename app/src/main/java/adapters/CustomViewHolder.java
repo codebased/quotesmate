@@ -1,6 +1,5 @@
 package adapters;
 
-
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,13 +12,13 @@ import helpers.IntentUtil;
 /**
  * Created by codebased on 14/07/16.
  */
-public class QuoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final TextView headerView;
     private final TextView subHeaderView;
     private final ImageView img;
     private final ItemClickedCallback itemClickedCallback;
 
-    public QuoteViewHolder(View itemView, ItemClickedCallback itemClickedCallback) {
+    public CustomViewHolder(View itemView, ItemClickedCallback itemClickedCallback) {
         super(itemView);
 
         this.headerView = (TextView) itemView.findViewById(R.id.headerView);
