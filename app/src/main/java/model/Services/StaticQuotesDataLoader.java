@@ -1,7 +1,10 @@
 package model.services;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import model.Author;
+import model.Genre;
 import model.Quote;
 import model.services.json.DataCallback;
 
@@ -12,8 +15,19 @@ public class StaticQuotesDataLoader implements IQuotesDataLoader {
         return getData();
     }
 
+
     @Override
-    public void getAllAsync(DataCallback<ArrayList<Quote>> callback) {
+    public void getAllGenreAsync(DataCallback<List<Genre>> callback) {
+
+    }
+
+    @Override
+    public void getAllAuthorAsync(DataCallback<List<Author>> callback) {
+
+    }
+
+    @Override
+    public void getAllAsync(DataCallback<List<Quote>> callback) {
 
         ArrayList<Quote> data = getData ();
 

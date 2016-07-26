@@ -69,7 +69,7 @@ public class QuotesArrayAdapter extends ArrayAdapter<Quote> {
 
         Holder holder;
         holder = new Holder();
-        convertView = inflater.inflate(R.layout.quote_list_item, null);
+        convertView = inflater.inflate(R.layout.list_item, null);
         holder.headerView = (TextView) convertView.findViewById(R.id.headerView);
         holder.subHeaderView = (TextView) convertView.findViewById(R.id.subHeaderView);
         holder.img = (ImageView) convertView.findViewById(R.id.leftImageView);
