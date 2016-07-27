@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import adapters.QuotesArrayAdapter;
 import helpers.IntentUtil;
@@ -17,13 +17,13 @@ import model.Quote;
 import model.services.IQuotesDataLoader;
 import model.services.json.DataCallback;
 import model.services.json.JsonQuotesDataLoader;
-import model.services.json.provider.RawJsonProvider;
+import model.services.json.provider.HttpJsonProvider;
 
 public class LegacyQuoteListActivity extends AppCompatActivity {
 
     private ListView listView;
 
-    private ArrayList<Quote> quotes;
+    private List<Quote> quotes;
 
     private ArrayAdapter<Quote> adapter;
 
@@ -33,7 +33,7 @@ public class LegacyQuoteListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_legacy_quote_list);
-        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new RawJsonProvider());
+        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new HttpJsonProvider());
         initUI();
     }
 
@@ -45,16 +45,16 @@ public class LegacyQuoteListActivity extends AppCompatActivity {
 
     private void initData() {
 
-        quotesDataLoader.getAllAsync(new DataCallback<ArrayList<Quote>>() {
+        quotesDataLoader.getAllAsync(new DataCallback<List<Quote>>() {
             @Override
-            public void onSuccess(ArrayList<Quote> result) {
+            public void onSuccess(List<Quote> result) {
 
                 quotes = result;
                 // ahh the moment you have created a new Array... and override, it has created an anonymous class
                 // for you thus the below is same as saying:
                 // MyAdapter extends ArrayAdapter...
                 adapter = new QuotesArrayAdapter(LegacyQuoteListActivity.this, R
-                        .layout.quote_list_item, quotes);
+                        .layout.list_item, quotes);
 //
 //                make it empty
 // adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
