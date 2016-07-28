@@ -16,7 +16,7 @@ import adapters.CustomRecyclerAdapter;
 import customviews.CustomRecyclerView;
 import model.services.IQuotesDataLoader;
 import model.services.json.JsonQuotesDataLoader;
-import model.services.json.provider.RawJsonProvider;
+import model.services.json.provider.RetroServiceJsonProvider;
 
 public abstract class BaseFragment<T> extends Fragment {
 
@@ -43,7 +43,7 @@ public abstract class BaseFragment<T> extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        quotesDataLoader = new JsonQuotesDataLoader(view.getContext(), new RawJsonProvider());
+        quotesDataLoader = new JsonQuotesDataLoader(view.getContext(), new RetroServiceJsonProvider());
         listView = (CustomRecyclerView) view.findViewById(R.id.listView);
         listView.setEmtpyStateView(view.findViewById(R.id.empty));
     }
