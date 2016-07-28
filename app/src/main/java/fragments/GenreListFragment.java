@@ -77,4 +77,11 @@ public class GenreListFragment extends BaseFragment<Genre> {
             }
         });
     }
+
+    @Override
+    public void onRefresh() {
+        super.onRefresh();
+
+        initializeData();
+    }
 }

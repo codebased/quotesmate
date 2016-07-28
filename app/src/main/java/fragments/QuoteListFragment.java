@@ -76,4 +76,10 @@ public class QuoteListFragment extends BaseFragment<Quote> {
             }
         });
     }
+
+    @Override
+    public void onRefresh() {
+        super.onRefresh();
+        initializeData();
+    }
 }

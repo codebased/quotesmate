@@ -75,4 +75,10 @@ public class AuthorListFragment extends BaseFragment<Author> {
             }
         });
     }
+
+    @Override
+    public void onRefresh() {
+        super.onRefresh();
+        initializeData();
+    }
 }

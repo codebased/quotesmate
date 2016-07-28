@@ -4,6 +4,7 @@ package fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import model.services.IQuotesDataLoader;
 import model.services.json.JsonQuotesDataLoader;
 import model.services.json.provider.RetroServiceJsonProvider;
 
-public abstract class BaseFragment<T> extends Fragment {
+public abstract class BaseFragment<T> extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
 
     protected CustomRecyclerView listView;
@@ -28,6 +29,8 @@ public abstract class BaseFragment<T> extends Fragment {
     protected CustomRecyclerAdapter<T> adapter;
 
     protected IQuotesDataLoader quotesDataLoader;
+
+    private SwipeRefreshLayout swipeRefreshView;
 
     @Nullable
     @Override
@@ -45,7 +48,9 @@ public abstract class BaseFragment<T> extends Fragment {
 
         quotesDataLoader = new JsonQuotesDataLoader(view.getContext(), new RetroServiceJsonProvider());
         listView = (CustomRecyclerView) view.findViewById(R.id.listView);
+        swipeRefreshView = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshView);
         listView.setEmtpyStateView(view.findViewById(R.id.empty));
+        swipeRefreshView.setOnRefreshListener(this);
     }
 
     @Override
@@ -54,5 +59,8 @@ public abstract class BaseFragment<T> extends Fragment {
         initializeData();
     }
 
-
+    @Override
+    public void onRefresh() {
+        swipeRefreshView.setRefreshing(false);
+    }
 }
