@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 import model.services.json.DataCallback;
 
 
-public class RawJsonProvider implements IJsonProvider {
+public class RawJsonProvider implements IJsonProvider<String> {
 
     @Override
     public void getJsonAsync(Context context, DataCallback<String> callback) {

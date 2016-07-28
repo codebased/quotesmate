@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import adapters.ItemClickedCallback;
@@ -21,8 +20,7 @@ import model.Quote;
 import model.services.IQuotesDataLoader;
 import model.services.json.DataCallback;
 import model.services.json.JsonQuotesDataLoader;
-import model.services.json.provider.HttpJsonProvider;
-import model.services.json.provider.RawJsonProvider;
+import model.services.json.provider.RetroServiceJsonProvider;
 
 public class QuoteListActivity extends AppCompatActivity {
 
@@ -40,7 +38,7 @@ public class QuoteListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quote_list);
-        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new HttpJsonProvider());
+        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new RetroServiceJsonProvider());
         initUI();
     }
 

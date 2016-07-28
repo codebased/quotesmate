@@ -8,7 +8,7 @@ import model.services.json.provider.http.QuotesAsyncTask;
 /**
  * Created by codebased on 26/07/16.
  */
-public class HttpJsonProvider implements IJsonProvider {
+public class HttpJsonProvider implements IJsonProvider<String> {
 
     @Override
     public void getJsonAsync(Context context, DataCallback<String> callback) {

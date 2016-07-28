@@ -31,10 +31,11 @@ public class JsonQuotesDataLoader implements IQuotesDataLoader {
 
     @Override
     public void getAllAsync(final DataCallback<List<Quote>> callback) {
-        this.jsonProvider.getJsonAsync(context, new DataCallback<String>() {
+        this.jsonProvider.getJsonAsync(context, new DataCallback<List<Quote>>() {
             @Override
-            public void onSuccess(String result) {
-                callback.onSuccess(parser.<Quote>deserializeList(result));
+            public void onSuccess(List<Quote> result) {
+//                callback.onSuccess(parser.<Quote>deserializeList(result));
+                callback.onSuccess(result);
             }
 
             @Override
