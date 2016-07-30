@@ -3,40 +3,32 @@ package adapters;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
-import android.view.ViewGroup;
 
 import java.util.List;
 
 public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private final List<Fragment> fragments;
-    private final List<String> titles;
+    private final List<Fragment> mFragmentList;
+    private final List<String> mTitlesList;
 
     public TabFragmentPagerAdapter(FragmentManager fm, List<Fragment> fragments, List<String> titles) {
         super(fm);
-        this.fragments = fragments;
-        this.titles = titles;
+        this.mFragmentList = fragments;
+        this.mTitlesList = titles;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return fragments.get(position);
+        return mFragmentList.get(position);
     }
 
     @Override
     public int getCount() {
-        return this.fragments.size();
+        return this.mFragmentList.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return this.titles.get(position);
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        super.destroyItem(container, position, object);
-        Log.i(TabFragmentPagerAdapter.class.getSimpleName(), "Destroying " + position);
+        return this.mTitlesList.get(position);
     }
 }

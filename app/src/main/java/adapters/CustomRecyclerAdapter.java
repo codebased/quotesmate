@@ -4,14 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.imcodebased.quotesmate.R;
 
 import java.util.List;
 
-/**
- * Created by codebased on 14/07/16.
- */
 public abstract class CustomRecyclerAdapter<T> extends RecyclerView.Adapter<CustomViewHolder> implements ItemClickedCallback {
 
     private final ItemClickedCallback ItemClickedCallback;
@@ -39,7 +35,7 @@ public abstract class CustomRecyclerAdapter<T> extends RecyclerView.Adapter<Cust
 
     @Override
     public int getItemCount() {
-        return items.size();
+       return items.size();
     }
 
     @Override

@@ -2,23 +2,31 @@ package model.services.json.provider;
 
 import android.content.Context;
 
+import java.util.List;
+
+import model.Author;
+import model.Genre;
+import model.Quote;
 import model.services.json.DataCallback;
 import model.services.json.provider.http.QuotesAsyncTask;
 
 /**
  * Created by codebased on 26/07/16.
  */
-public class HttpJsonProvider implements IJsonProvider<String> {
+public class HttpJsonProvider implements IJsonProvider {
 
     @Override
-    public void getJsonAsync(Context context, DataCallback<String> callback) {
+    public void getQuotesJsonAsync(Context context, DataCallback<List<Quote>> callback) {
 
-        QuotesAsyncTask quotesAsyncTask = new QuotesAsyncTask(callback);
-        quotesAsyncTask.execute();
     }
 
     @Override
-    public String getJson(Context context) {
-        return null;
+    public void getAuthorsJsonAsync(Context context, DataCallback<List<Author>> callback) {
+
+    }
+
+    @Override
+    public void getGenresJsonAsync(Context context, DataCallback<List<Genre>> callback) {
+
     }
 }

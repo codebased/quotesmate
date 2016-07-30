@@ -45,7 +45,7 @@ public class LegacyQuoteListActivity extends AppCompatActivity {
 
     private void initData() {
 
-        quotesDataLoader.getAllAsync(new DataCallback<List<Quote>>() {
+        quotesDataLoader.getAllRandomQuoteAsync(new DataCallback<List<Quote>>() {
             @Override
             public void onSuccess(List<Quote> result) {
 
@@ -57,7 +57,7 @@ public class LegacyQuoteListActivity extends AppCompatActivity {
                         .layout.list_item, quotes);
 //
 //                make it empty
-// adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+// mTabFragmentPagerAdapter = new QuotesArrayAdapter(QuoteListActivity.this, R
 //                        .layout.quote_list_item, new ArrayList<Quote>());
 
                 listView.setAdapter(adapter);

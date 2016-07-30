@@ -7,24 +7,15 @@ import com.imcodebased.quotesmate.R;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
+import model.Author;
+import model.Genre;
+import model.Quote;
 import model.services.json.DataCallback;
 
 
-public class RawJsonProvider implements IJsonProvider<String> {
-
-    @Override
-    public void getJsonAsync(Context context, DataCallback<String> callback) {
-
-        if (callback != null) {
-            callback.onSuccess(readJson(context));
-        }
-    }
-
-    @Override
-    public String getJson(Context context) {
-        return readJson(context);
-    }
+public class RawJsonProvider implements IJsonProvider {
 
     private String readJson(Context context) {
         InputStreamReader inputStream = new InputStreamReader(context.getResources().openRawResource(R.raw.quotes));
@@ -44,5 +35,20 @@ public class RawJsonProvider implements IJsonProvider<String> {
         }
 
         return byteArrayOutputStream.toString();
+    }
+
+    @Override
+    public void getQuotesJsonAsync(Context context, DataCallback<List<Quote>> callback) {
+
+    }
+
+    @Override
+    public void getAuthorsJsonAsync(Context context, DataCallback<List<Author>> callback) {
+
+    }
+
+    @Override
+    public void getGenresJsonAsync(Context context, DataCallback<List<Genre>> callback) {
+
     }
 }

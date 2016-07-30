@@ -11,12 +11,6 @@ import model.services.json.DataCallback;
 public class StaticQuotesDataLoader implements IQuotesDataLoader {
 
     @Override
-    public ArrayList<Quote> getAll() {
-        return getData();
-    }
-
-
-    @Override
     public void getAllGenreAsync(DataCallback<List<Genre>> callback) {
 
     }
@@ -27,7 +21,7 @@ public class StaticQuotesDataLoader implements IQuotesDataLoader {
     }
 
     @Override
-    public void getAllAsync(DataCallback<List<Quote>> callback) {
+    public void getAllRandomQuoteAsync(DataCallback<List<Quote>> callback) {
 
         ArrayList<Quote> data = getData ();
 

@@ -4,6 +4,10 @@ import android.content.Context;
 
 import java.util.List;
 
+import model.Author;
+import model.Authors;
+import model.Genre;
+import model.Genres;
 import model.Quote;
 import model.Quotes;
 import model.services.json.DataCallback;
@@ -13,15 +17,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
- * Created by codebased on 28/07/16.
- */
-public class RetroServiceJsonProvider implements IJsonProvider<List<Quote>> {
+
+public class RetroServiceJsonProvider implements IJsonProvider {
 
     QuoteHttpService quoteHttpService = ServiceGenerator.createService(QuoteHttpService.class);
 
     @Override
-    public void getJsonAsync(Context context, final DataCallback<List<Quote>> callback) {
+    public void getQuotesJsonAsync(Context context, final DataCallback<List<Quote>> callback) {
 
         Call<Quotes> randomQuoteCall = quoteHttpService.randomize(10);
         randomQuoteCall.enqueue(new Callback<Quotes>() {
@@ -39,7 +41,36 @@ public class RetroServiceJsonProvider implements IJsonProvider<List<Quote>> {
     }
 
     @Override
-    public String getJson(Context context) {
-        return null;
+    public void getAuthorsJsonAsync(Context context, final DataCallback<List<Author>> callback) {
+
+        Call<Authors> randomQuoteCall = quoteHttpService.authors("");
+        randomQuoteCall.enqueue(new Callback<Authors>() {
+            @Override
+            public void onResponse(Call<Authors> call, Response<Authors> response) {
+                callback.onSuccess(response.body().getAuthors());
+
+            }
+
+            @Override
+            public void onFailure(Call<Authors> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void getGenresJsonAsync(Context context, final DataCallback<List<Genre>> callback) {
+
+        Call<Genres> randomQuoteCall = quoteHttpService.genres("");
+        randomQuoteCall.enqueue(new Callback<Genres>() {
+            @Override
+            public void onResponse(Call<Genres> call, Response<Genres> response) {
+                callback.onSuccess(response.body().getGenres());
+            }
+
+            @Override
+            public void onFailure(Call<Genres> call, Throwable t) {
+            }
+        });
     }
 }

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Quotesmate</string>
     <string name="quotes_are_coming_soon">Quotes are coming soon...</string>
+    <string name="title_tab_random_quote">Random Quotes</string>
+    <string name="title_tab_authors">Authors</string>
+    <string name="title_tab_genres">Genres</string>
+    <string name="title_activity_tab_main" type="id">Quotesmate</string>
+
 </resources>
