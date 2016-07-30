@@ -51,7 +51,7 @@ public class QuoteListActivity extends AppCompatActivity {
 
     private void initData() {
 
-        quotesDataLoader.getAllAsync(new DataCallback<List<Quote>>() {
+        quotesDataLoader.getAllRandomQuoteAsync(new DataCallback<List<Quote>>() {
             @Override
             public void onSuccess(List<Quote> result) {
 
@@ -59,7 +59,7 @@ public class QuoteListActivity extends AppCompatActivity {
                 // ahh the moment you have created a new Array... and override, it has created an anonymous class
                 // for you thus the below is same as saying:
                 // MyAdapter extends ArrayAdapter...
-                // adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+                // mTabFragmentPagerAdapter = new QuotesArrayAdapter(QuoteListActivity.this, R
                 //      .layout.list_item, quotes);
 
                 adapter = new QuotesRecyclerAdapter(quotes, new ItemClickedCallback() {
@@ -70,7 +70,7 @@ public class QuoteListActivity extends AppCompatActivity {
                 });
 //
 //                make it empty
-// adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+// mTabFragmentPagerAdapter = new QuotesArrayAdapter(QuoteListActivity.this, R
 //                        .layout.list_item, new ArrayList<Quote>());
 
                 listView.setEmtpyStateView(findViewById(R.id.empty));

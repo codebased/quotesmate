@@ -1,6 +1,8 @@
 package model.services.json.provider.http;
 
 
+import model.Authors;
+import model.Genres;
 import model.Quotes;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -24,8 +26,8 @@ public interface QuoteHttpService {
     Call<Quotes> today(@Header("x-custom-message") String message);
 
     @GET("/quotes/genres/{genre}")
-    Call<Quotes> genres(@Path("genre") String genre);
+    Call<Genres> genres(@Path("genre") String genre);
 
-    @GET("/quotes/author/{author}")
-    Call<Quotes> authors(@Path("author") String author);
+    @GET("/quotes/authors/{author}")
+    Call<Authors> authors(@Path("author") String author);
 }

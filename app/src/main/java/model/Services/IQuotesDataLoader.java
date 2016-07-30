@@ -10,9 +10,7 @@ import model.services.json.DataCallback;
 
 public interface IQuotesDataLoader {
 
-    List<Quote> getAll();
-
-    void getAllAsync(DataCallback<List<Quote>> callback);
+    void getAllRandomQuoteAsync(DataCallback<List<Quote>> callback);
     void getAllGenreAsync(DataCallback<List<Genre>> callback);
     void getAllAuthorAsync(DataCallback<List<Author>> callback);
 }

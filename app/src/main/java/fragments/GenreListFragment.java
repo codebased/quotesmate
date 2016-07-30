@@ -8,13 +8,11 @@ import java.util.List;
 
 import adapters.CustomRecyclerAdapter;
 import adapters.ItemClickedCallback;
+import helpers.StringUtil;
 import model.Genre;
 import model.services.json.DataCallback;
 
-/**
- * Created by codebased on 22/07/16.
- */
-public class GenreListFragment extends BaseFragment<Genre> {
+public class GenreListFragment extends BaseListFragment<Genre> {
 
     @Override
     public int getLayout() {
@@ -23,59 +21,18 @@ public class GenreListFragment extends BaseFragment<Genre> {
 
     @Override
     public void initializeData() {
-        quotesDataLoader.getAllGenreAsync(new DataCallback<List<Genre>>() {
+        super.initializeData();
+        quotesDataLoader.getAllGenreAsync(this);
+    }
 
-            @Override
-            public void onSuccess(List<Genre> result) {
+    @Override
+    public String getHeader(Genre item) {
+        return StringUtil.capitalFirstLetter(item.getGenre());
+    }
 
-                quotes = result;
-                // ahh the moment you have created a new Array... and override, it has created an anonymous class
-                // for you thus the below is same as saying:
-                // MyAdapter extends ArrayAdapter...
-                // adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
-                //      .layout.list_item, quotes);
-
-                adapter = new CustomRecyclerAdapter<Genre>(quotes, new ItemClickedCallback() {
-                    @Override
-                    public void onClick(int position) {
-
-                    }
-                }) {
-                    @Override
-                    public String getHeader(Genre item) {
-                        return null;
-                    }
-
-                    @Override
-                    public String getSubHeader(Genre item) {
-                        return null;
-                    }
-                };
-
-
-//                make it empty
-// adapter = new QuotesArrayAdapter(QuoteListActivity.this, R
-//                        .layout.list_item, new ArrayList<Quote>());
-
-                listView.setLayoutManager(new LinearLayoutManager(getContext()));
-                listView.setHasFixedSize(false);
-                listView.setAdapter(adapter);
-
-
-//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                        Toast.makeText(QuoteListActivity.this, quotes.get(position).toString(), Toast.LENGTH_LONG).show();
-//                        startActivity(IntentUtil.createShareIntent(quotes.get(position).toString()));
-//                    }
-//                });
-            }
-
-            @Override
-            public void onFailure(String error) {
-
-            }
-        });
+    @Override
+    public String getSubHeader(Genre item) {
+        return String.format("%s Quotes", item.getQuotes());
     }
 
     @Override
@@ -83,5 +40,17 @@ public class GenreListFragment extends BaseFragment<Genre> {
         super.onRefresh();
 
         initializeData();
+    }
+
+    @Override
+    public void onPreInit() {
+        super.onPreInit();
+        this.showProgressDialog("Loading...");
+    }
+
+    @Override
+    public void onPostData() {
+        super.onPostData();
+        this.hideProgressDialog();
     }
 }

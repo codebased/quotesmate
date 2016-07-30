@@ -6,6 +6,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.imcodebased.quotesmate.R;
 
@@ -13,53 +14,64 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapters.TabFragmentPagerAdapter;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import fragments.AuthorListFragment;
 import fragments.GenreListFragment;
 import fragments.QuoteListFragment;
 
-
-/**
- * Created by codebased on 22/07/16.
- */
 public class TabMainActivity extends AppCompatActivity {
 
-    private TabLayout tabs;
-    private ViewPager viewPager;
+    @BindView(R.id.tabsView)
+    protected TabLayout tabView;
 
-    private List<Fragment> fragmentList;
-    private List<String> titles;
-    private TabFragmentPagerAdapter adapter;
+    @BindView(R.id.viewPagerView)
+    protected ViewPager viewPagerView;
+
+    @BindView(R.id.toolbarView)
+    protected Toolbar toolbarView;
+
+    protected List<Fragment> mFragmentList;
+    protected List<String> mTitleList;
+    protected TabFragmentPagerAdapter mTabFragmentPagerAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
 
-        this.initUI();
-        this.prepareData();
+        ButterKnife.bind(this);
 
-        adapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), fragmentList, titles);
+        toolbarView.setTitle(R.string.title_activity_tab_main);
 
-        viewPager.setAdapter(adapter);
-        tabs.setupWithViewPager(viewPager);
+        prepareData();
+
+        mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
+
+        viewPagerView.setAdapter(mTabFragmentPagerAdapter);
+        tabView.setupWithViewPager(viewPagerView);
+
+        setTabIcons();
     }
 
     private void prepareData() {
-        fragmentList = new ArrayList<>();
-        fragmentList.add(new QuoteListFragment());
-        fragmentList.add(new AuthorListFragment());
-        fragmentList.add(new GenreListFragment());
 
-        titles = new ArrayList<>();
-        titles.add("Random Quotes");
-        titles.add("Authors");
-        titles.add("Genre");
+        mFragmentList = new ArrayList<>();
+        mTitleList = new ArrayList<>();
+
+        setFragmentData(new QuoteListFragment(), R.string.title_tab_random_quote);
+        setFragmentData(new AuthorListFragment(), R.string.title_tab_authors);
+        setFragmentData(new GenreListFragment(), R.string.title_tab_genres);
     }
 
-    private void initUI() {
+    private void setTabIcons() {
+        tabView.getTabAt(0).setIcon(R.drawable.ic_random);
+        tabView.getTabAt(1).setIcon(R.drawable.ic_author);
+        tabView.getTabAt(2).setIcon(R.drawable.ic_genre);
+    }
 
-        tabs = (TabLayout) findViewById(R.id.tabs);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-
+    private void setFragmentData(Fragment fragment, int res) {
+        mFragmentList.add(fragment);
+        mTitleList.add(getString(res));
     }
 }

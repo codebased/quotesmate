@@ -24,14 +24,11 @@ public class JsonQuotesDataLoader implements IQuotesDataLoader {
         parser = new QuotesManualParser();
     }
 
-    @Override
-    public List<Quote> getAll() {
-        return parser.deserializeList(this.jsonProvider.getJson(context));
-    }
+
 
     @Override
-    public void getAllAsync(final DataCallback<List<Quote>> callback) {
-        this.jsonProvider.getJsonAsync(context, new DataCallback<List<Quote>>() {
+    public void getAllRandomQuoteAsync(final DataCallback<List<Quote>> callback) {
+        this.jsonProvider.getQuotesJsonAsync(context, new DataCallback<List<Quote>>() {
             @Override
             public void onSuccess(List<Quote> result) {
 //                callback.onSuccess(parser.<Quote>deserializeList(result));
@@ -45,13 +42,35 @@ public class JsonQuotesDataLoader implements IQuotesDataLoader {
     }
 
     @Override
-    public void getAllGenreAsync(DataCallback<List<Genre>> callback) {
+    public void getAllGenreAsync(final DataCallback<List<Genre>> callback) {
 
+        this.jsonProvider.getGenresJsonAsync(context, new DataCallback<List<Genre>>() {
+            @Override
+            public void onSuccess(List<Genre> result) {
+//                callback.onSuccess(parser.<Quote>deserializeList(result));
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String reason) {
+            }
+        });
 
     }
 
     @Override
-    public void getAllAuthorAsync(DataCallback<List<Author>> callback) {
+    public void getAllAuthorAsync(final DataCallback<List<Author>> callback) {
 
+        this.jsonProvider.getAuthorsJsonAsync(context, new DataCallback<List<Author>>() {
+            @Override
+            public void onSuccess(List<Author> result) {
+//                callback.onSuccess(parser.<Quote>deserializeList(result));
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String reason) {
+            }
+        });
     }
 }
