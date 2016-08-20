@@ -1,9 +1,14 @@
 package model.services.json.provider;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import helpers.StringUtil;
 import model.Author;
 import model.Authors;
 import model.Genre;
@@ -11,6 +16,7 @@ import model.Genres;
 import model.Quote;
 import model.Quotes;
 import model.services.json.DataCallback;
+import model.services.json.parser.GsonParser;
 import model.services.json.provider.http.QuoteHttpService;
 import model.services.json.provider.http.ServiceGenerator;
 import retrofit2.Call;
@@ -38,6 +44,23 @@ public class RetroServiceJsonProvider implements IJsonProvider {
 
             }
         });
+    }
+
+    @Override
+    public void getFavouriteQuotesJsonAsync(Context context, DataCallback<List<Quote>> callback) {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String quoteString = sharedPreferences.getString("", null);
+        List<Quote> quotes;
+
+        if (StringUtil.isNullOrWhiteSpace(quoteString)) {
+            quotes = new ArrayList<>();
+        } else {
+            GsonParser gsonParser = new GsonParser();
+            quotes = gsonParser.deserializeList(quoteString);
+        }
+
+        callback.onSuccess(quotes);
     }
 
     @Override
@@ -70,6 +93,36 @@ public class RetroServiceJsonProvider implements IJsonProvider {
 
             @Override
             public void onFailure(Call<Genres> call, Throwable t) {
+            }
+        });
+    }
+
+    @Override
+    public void getAuthorQuotesJsonAsync(Context context, String author, final DataCallback<List<Quote>> callback) {
+        Call<Quotes> randomQuoteCall = quoteHttpService.authorQuotes(author);
+        randomQuoteCall.enqueue(new Callback<Quotes>() {
+            @Override
+            public void onResponse(Call<Quotes> call, Response<Quotes> response) {
+                callback.onSuccess(response.body().getQuotes());
+            }
+
+            @Override
+            public void onFailure(Call<Quotes> call, Throwable t) {
+            }
+        });
+    }
+
+    @Override
+    public void getGenreQuotesJsonAsync(Context context, String genre, final DataCallback<List<Quote>> callback) {
+        Call<Quotes> randomQuoteCall = quoteHttpService.genreQuotes(genre);
+        randomQuoteCall.enqueue(new Callback<Quotes>() {
+            @Override
+            public void onResponse(Call<Quotes> call, Response<Quotes> response) {
+                callback.onSuccess(response.body().getQuotes());
+            }
+
+            @Override
+            public void onFailure(Call<Quotes> call, Throwable t) {
             }
         });
     }

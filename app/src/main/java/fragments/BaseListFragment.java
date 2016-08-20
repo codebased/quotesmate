@@ -21,11 +21,9 @@ import adapters.ItemClickedCallback;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import customviews.CustomRecyclerView;
-import helpers.IntentUtil;
-import model.Quote;
-import model.services.IQuotesDataLoader;
+import model.services.IDataLoader;
 import model.services.json.DataCallback;
-import model.services.json.JsonQuotesDataLoader;
+import model.services.json.JsonDataLoader;
 import model.services.json.provider.RetroServiceJsonProvider;
 
 public abstract class BaseListFragment<T> extends Fragment implements SwipeRefreshLayout.OnRefreshListener, DataCallback<List<T>> {
@@ -41,10 +39,9 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
     private ProgressDialog mProgressDialog;
 
-
-    protected List<T> quotes;
+    protected List<T> items;
     protected CustomRecyclerAdapter<T> adapter;
-    protected IQuotesDataLoader quotesDataLoader;
+    protected IDataLoader mDataLoader;
 
     @Nullable
     @Override
@@ -63,7 +60,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         listView.setEmtpyStateView(emptyListView);
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
         listView.setHasFixedSize(false);
-        quotesDataLoader = new JsonQuotesDataLoader(view.getContext(), new RetroServiceJsonProvider());
+        mDataLoader = new JsonDataLoader(view.getContext(), new RetroServiceJsonProvider());
         swipeRefreshView.setOnRefreshListener(this);
     }
 
@@ -82,18 +79,19 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     public abstract int getLayout();
 
     @CallSuper
-    public void initializeData(){
+    public void initializeData() {
         onPreInit();
     }
 
     @Override
     public void onSuccess(List<T> result) {
 
-        quotes = result;
-        adapter = new CustomRecyclerAdapter<T>(quotes, new ItemClickedCallback() {
+        items = result;
+        adapter = new CustomRecyclerAdapter<T>(items, new ItemClickedCallback() {
             @Override
             public void onClick(int position) {
-                startActivity(IntentUtil.createShareIntent(quotes.get(position).toString()));
+                onItemClicked(items.get(position));
+//                startActivity(IntentUtil.createShareIntent(items.get(position).toString()));
             }
         }) {
             @Override
@@ -138,11 +136,13 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
     public abstract String getSubHeader(T item);
 
+    public abstract void onItemClicked(T item);
+
     public void onPreInit() {
 
     }
 
-    public void onPostData(){
+    public void onPostData() {
     }
 
     protected void showProgressDialog(String message) {

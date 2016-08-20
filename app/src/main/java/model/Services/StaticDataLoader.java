@@ -8,7 +8,7 @@ import model.Genre;
 import model.Quote;
 import model.services.json.DataCallback;
 
-public class StaticQuotesDataLoader implements IQuotesDataLoader {
+public class StaticDataLoader implements IDataLoader {
 
     @Override
     public void getAllGenreAsync(DataCallback<List<Genre>> callback) {
@@ -21,11 +21,26 @@ public class StaticQuotesDataLoader implements IQuotesDataLoader {
     }
 
     @Override
+    public void getAllQuoteByGenreAsync(String genre, DataCallback<List<Quote>> callback) {
+
+    }
+
+    @Override
+    public void getAllQuoteByAuthorAsync(String author, DataCallback<List<Quote>> callback) {
+
+    }
+
+    @Override
     public void getAllRandomQuoteAsync(DataCallback<List<Quote>> callback) {
 
         ArrayList<Quote> data = getData ();
 
         callback.onSuccess(data);
+    }
+
+    @Override
+    public void getAllFavouriteQuoteAsync(DataCallback<List<Quote>> callback) {
+
     }
 
     private ArrayList<Quote> getData() {

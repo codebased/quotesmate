@@ -14,9 +14,9 @@ import java.util.List;
 import adapters.QuotesArrayAdapter;
 import helpers.IntentUtil;
 import model.Quote;
-import model.services.IQuotesDataLoader;
+import model.services.IDataLoader;
 import model.services.json.DataCallback;
-import model.services.json.JsonQuotesDataLoader;
+import model.services.json.JsonDataLoader;
 import model.services.json.provider.HttpJsonProvider;
 
 public class LegacyQuoteListActivity extends AppCompatActivity {
@@ -27,13 +27,13 @@ public class LegacyQuoteListActivity extends AppCompatActivity {
 
     private ArrayAdapter<Quote> adapter;
 
-    private IQuotesDataLoader quotesDataLoader;
+    private IDataLoader quotesDataLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_legacy_quote_list);
-        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new HttpJsonProvider());
+        quotesDataLoader = new JsonDataLoader(getApplicationContext(), new HttpJsonProvider());
         initUI();
     }
 
@@ -57,7 +57,7 @@ public class LegacyQuoteListActivity extends AppCompatActivity {
                         .layout.list_item, quotes);
 //
 //                make it empty
-// mTabFragmentPagerAdapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+// mTabFragmentPagerAdapter = new QuotesArrayAdapter(OldQuoteListActivity.this, R
 //                        .layout.quote_list_item, new ArrayList<Quote>());
 
                 listView.setAdapter(adapter);

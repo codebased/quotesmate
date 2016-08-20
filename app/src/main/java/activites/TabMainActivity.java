@@ -17,6 +17,7 @@ import adapters.TabFragmentPagerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import fragments.AuthorListFragment;
+import fragments.FavouriteListFragment;
 import fragments.GenreListFragment;
 import fragments.QuoteListFragment;
 
@@ -59,15 +60,17 @@ public class TabMainActivity extends AppCompatActivity {
         mFragmentList = new ArrayList<>();
         mTitleList = new ArrayList<>();
 
+        setFragmentData(new FavouriteListFragment(), R.string.title_tab_favourite);
         setFragmentData(new QuoteListFragment(), R.string.title_tab_random_quote);
         setFragmentData(new AuthorListFragment(), R.string.title_tab_authors);
         setFragmentData(new GenreListFragment(), R.string.title_tab_genres);
     }
 
     private void setTabIcons() {
-        tabView.getTabAt(0).setIcon(R.drawable.ic_random);
-        tabView.getTabAt(1).setIcon(R.drawable.ic_author);
-        tabView.getTabAt(2).setIcon(R.drawable.ic_genre);
+        tabView.getTabAt(0).setIcon(R.drawable.ic_favourite);
+        tabView.getTabAt(1).setIcon(R.drawable.ic_random);
+        tabView.getTabAt(2).setIcon(R.drawable.ic_author);
+        tabView.getTabAt(3).setIcon(R.drawable.ic_genre);
     }
 
     private void setFragmentData(Fragment fragment, int res) {

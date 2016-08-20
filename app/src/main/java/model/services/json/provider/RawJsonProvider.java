@@ -43,12 +43,27 @@ public class RawJsonProvider implements IJsonProvider {
     }
 
     @Override
+    public void getFavouriteQuotesJsonAsync(Context context, DataCallback<List<Quote>> callback) {
+
+    }
+
+    @Override
     public void getAuthorsJsonAsync(Context context, DataCallback<List<Author>> callback) {
 
     }
 
     @Override
     public void getGenresJsonAsync(Context context, DataCallback<List<Genre>> callback) {
+
+    }
+
+    @Override
+    public void getAuthorQuotesJsonAsync(Context context, String author, DataCallback<List<Quote>> callback) {
+
+    }
+
+    @Override
+    public void getGenreQuotesJsonAsync(Context context, String genre, DataCallback<List<Quote>> callback) {
 
     }
 }

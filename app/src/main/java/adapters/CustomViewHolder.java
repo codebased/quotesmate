@@ -43,9 +43,9 @@ public class CustomViewHolder extends RecyclerView.ViewHolder implements View.On
 
     @Override
     public void onClick(View v) {
-//        if (itemClickedCallback != null) {
-//            itemClickedCallback.onClick(getAdapterPosition());
-//        }
-        v.getContext().startActivity(IntentUtil.createShareIntent(headerView.getText().toString()));
+        if (itemClickedCallback != null) {
+            itemClickedCallback.onClick(getAdapterPosition());
+        }
+//        v.getContext().startActivity(IntentUtil.createShareIntent(headerView.getText().toString()));
     }
 }

@@ -17,12 +17,12 @@ import customviews.CustomRecyclerView;
 import helpers.FileLoaderTask;
 import helpers.IntentUtil;
 import model.Quote;
-import model.services.IQuotesDataLoader;
+import model.services.IDataLoader;
 import model.services.json.DataCallback;
-import model.services.json.JsonQuotesDataLoader;
+import model.services.json.JsonDataLoader;
 import model.services.json.provider.RetroServiceJsonProvider;
 
-public class QuoteListActivity extends AppCompatActivity {
+public class OldQuoteListActivity extends AppCompatActivity {
 
     private CustomRecyclerView listView;
 
@@ -30,15 +30,15 @@ public class QuoteListActivity extends AppCompatActivity {
 
     private QuotesRecyclerAdapter adapter;
 
-    private IQuotesDataLoader quotesDataLoader;
+    private IDataLoader quotesDataLoader;
 
     private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quote_list);
-        quotesDataLoader = new JsonQuotesDataLoader(getApplicationContext(), new RetroServiceJsonProvider());
+        setContentView(R.layout.activity_old_quote_list);
+        quotesDataLoader = new JsonDataLoader(getApplicationContext(), new RetroServiceJsonProvider());
         initUI();
     }
 
@@ -59,7 +59,7 @@ public class QuoteListActivity extends AppCompatActivity {
                 // ahh the moment you have created a new Array... and override, it has created an anonymous class
                 // for you thus the below is same as saying:
                 // MyAdapter extends ArrayAdapter...
-                // mTabFragmentPagerAdapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+                // mTabFragmentPagerAdapter = new QuotesArrayAdapter(OldQuoteListActivity.this, R
                 //      .layout.list_item, quotes);
 
                 adapter = new QuotesRecyclerAdapter(quotes, new ItemClickedCallback() {
@@ -70,11 +70,11 @@ public class QuoteListActivity extends AppCompatActivity {
                 });
 //
 //                make it empty
-// mTabFragmentPagerAdapter = new QuotesArrayAdapter(QuoteListActivity.this, R
+// mTabFragmentPagerAdapter = new QuotesArrayAdapter(OldQuoteListActivity.this, R
 //                        .layout.list_item, new ArrayList<Quote>());
 
                 listView.setEmtpyStateView(findViewById(R.id.empty));
-                listView.setLayoutManager(new LinearLayoutManager(QuoteListActivity.this));
+                listView.setLayoutManager(new LinearLayoutManager(OldQuoteListActivity.this));
                 listView.setHasFixedSize(false);
                 listView.setAdapter(adapter);
 
@@ -82,7 +82,7 @@ public class QuoteListActivity extends AppCompatActivity {
 //                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //                    @Override
 //                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                        Toast.makeText(QuoteListActivity.this, quotes.get(position).toString(), Toast.LENGTH_LONG).show();
+//                        Toast.makeText(OldQuoteListActivity.this, quotes.get(position).toString(), Toast.LENGTH_LONG).show();
 //                        startActivity(IntentUtil.createShareIntent(quotes.get(position).toString()));
 //                    }
 //                });

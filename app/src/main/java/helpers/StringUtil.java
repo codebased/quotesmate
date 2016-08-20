@@ -15,4 +15,11 @@ public class StringUtil {
         return builder.toString();
     }
 
+    public static boolean isNullOrWhiteSpace(String str) {
+        return (str == null || str.trim().length() == 0);
+    }
+
+    public static boolean isNotNullAndWhiteSpace(String str) {
+        return !isNullOrWhiteSpace(str);
+    }
 }

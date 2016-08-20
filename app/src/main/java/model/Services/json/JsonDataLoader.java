@@ -7,24 +7,22 @@ import java.util.List;
 import model.Author;
 import model.Genre;
 import model.Quote;
-import model.services.IQuotesDataLoader;
+import model.services.IDataLoader;
 import model.services.json.parser.IParser;
 import model.services.json.parser.QuotesManualParser;
 import model.services.json.provider.IJsonProvider;
 
-public class JsonQuotesDataLoader implements IQuotesDataLoader {
+public class JsonDataLoader implements IDataLoader {
 
     private final IJsonProvider jsonProvider;
     private final Context context;
     private final IParser parser;
 
-    public JsonQuotesDataLoader(Context context, IJsonProvider jsonProvider) {
+    public JsonDataLoader(Context context, IJsonProvider jsonProvider) {
         this.jsonProvider = jsonProvider;
         this.context = context;
         parser = new QuotesManualParser();
     }
-
-
 
     @Override
     public void getAllRandomQuoteAsync(final DataCallback<List<Quote>> callback) {
@@ -32,6 +30,20 @@ public class JsonQuotesDataLoader implements IQuotesDataLoader {
             @Override
             public void onSuccess(List<Quote> result) {
 //                callback.onSuccess(parser.<Quote>deserializeList(result));
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String reason) {
+            }
+        });
+    }
+
+    @Override
+    public void getAllFavouriteQuoteAsync(final DataCallback<List<Quote>> callback) {
+        this.jsonProvider.getFavouriteQuotesJsonAsync(context, new DataCallback<List<Quote>>() {
+            @Override
+            public void onSuccess(List<Quote> result) {
                 callback.onSuccess(result);
             }
 
@@ -64,6 +76,36 @@ public class JsonQuotesDataLoader implements IQuotesDataLoader {
         this.jsonProvider.getAuthorsJsonAsync(context, new DataCallback<List<Author>>() {
             @Override
             public void onSuccess(List<Author> result) {
+//                callback.onSuccess(parser.<Quote>deserializeList(result));
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String reason) {
+            }
+        });
+    }
+
+    @Override
+    public void getAllQuoteByGenreAsync(String genre, final DataCallback<List<Quote>> callback) {
+        this.jsonProvider.getGenreQuotesJsonAsync(context, genre, new DataCallback<List<Quote>>() {
+            @Override
+            public void onSuccess(List<Quote> result) {
+//                callback.onSuccess(parser.<Quote>deserializeList(result));
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onFailure(String reason) {
+            }
+        });
+    }
+
+    @Override
+    public void getAllQuoteByAuthorAsync(String author, final DataCallback<List<Quote>> callback) {
+        this.jsonProvider.getAuthorQuotesJsonAsync(context, author, new DataCallback<List<Quote>>() {
+            @Override
+            public void onSuccess(List<Quote> result) {
 //                callback.onSuccess(parser.<Quote>deserializeList(result));
                 callback.onSuccess(result);
             }

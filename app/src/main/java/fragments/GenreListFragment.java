@@ -1,11 +1,13 @@
 package fragments;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.imcodebased.quotesmate.R;
 
 import java.util.List;
 
+import activites.QuoteListActivity;
 import adapters.CustomRecyclerAdapter;
 import adapters.ItemClickedCallback;
 import helpers.StringUtil;
@@ -22,7 +24,7 @@ public class GenreListFragment extends BaseListFragment<Genre> {
     @Override
     public void initializeData() {
         super.initializeData();
-        quotesDataLoader.getAllGenreAsync(this);
+        mDataLoader.getAllGenreAsync(this);
     }
 
     @Override
@@ -33,6 +35,13 @@ public class GenreListFragment extends BaseListFragment<Genre> {
     @Override
     public String getSubHeader(Genre item) {
         return String.format("%s Quotes", item.getQuotes());
+    }
+
+    @Override
+    public void onItemClicked(Genre item) {
+        Intent intent = new Intent(getContext(), QuoteListActivity.class);
+        intent.putExtra(QuoteListActivity.EXTRA_GENRE, item.getGenre());
+        startActivity(intent);
     }
 
     @Override
