@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 import fragments.QuoteListFragment;
 import helpers.StringUtil;
 
-public class QuoteListActivity extends AppCompatActivity {
+public class QuoteListActivity extends BaseActivity {
     public static final String EXTRA_GENRE = "EXTRA_GENRE";
     public static final String EXTRA_AUTHOR = "EXTRA_AUTHOR";
 
@@ -34,4 +34,6 @@ public class QuoteListActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.container, new QuoteListFragment()).commit();
     }
+
+
 }

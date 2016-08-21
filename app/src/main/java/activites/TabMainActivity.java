@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.imcodebased.quotesmate.R;
 
@@ -21,7 +23,7 @@ import fragments.FavouriteListFragment;
 import fragments.GenreListFragment;
 import fragments.QuoteListFragment;
 
-public class TabMainActivity extends AppCompatActivity {
+public class TabMainActivity extends BaseActivity {
 
     @BindView(R.id.tabsView)
     protected TabLayout tabView;
@@ -44,6 +46,7 @@ public class TabMainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         toolbarView.setTitle(R.string.title_activity_tab_main);
+        setSupportActionBar(toolbarView);
 
         prepareData();
 
@@ -53,6 +56,16 @@ public class TabMainActivity extends AppCompatActivity {
         tabView.setupWithViewPager(viewPagerView);
 
         setTabIcons();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     private void prepareData() {

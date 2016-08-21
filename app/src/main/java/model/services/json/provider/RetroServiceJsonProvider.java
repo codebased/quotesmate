@@ -22,6 +22,8 @@ import model.services.json.provider.http.ServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import services.IStore;
+import services.SharedPreferenceStore;
 
 
 public class RetroServiceJsonProvider implements IJsonProvider {
@@ -36,31 +38,18 @@ public class RetroServiceJsonProvider implements IJsonProvider {
             @Override
             public void onResponse(Call<Quotes> call, Response<Quotes> response) {
                 callback.onSuccess(response.body().getQuotes());
-
             }
 
             @Override
             public void onFailure(Call<Quotes> call, Throwable t) {
-
             }
         });
     }
 
     @Override
     public void getFavouriteQuotesJsonAsync(Context context, DataCallback<List<Quote>> callback) {
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        String quoteString = sharedPreferences.getString("", null);
-        List<Quote> quotes;
-
-        if (StringUtil.isNullOrWhiteSpace(quoteString)) {
-            quotes = new ArrayList<>();
-        } else {
-            GsonParser gsonParser = new GsonParser();
-            quotes = gsonParser.deserializeList(quoteString);
-        }
-
-        callback.onSuccess(quotes);
+        IStore store = new SharedPreferenceStore(context);
+        callback.onSuccess(store.getFavouriteQuotes());
     }
 
     @Override
@@ -71,12 +60,10 @@ public class RetroServiceJsonProvider implements IJsonProvider {
             @Override
             public void onResponse(Call<Authors> call, Response<Authors> response) {
                 callback.onSuccess(response.body().getAuthors());
-
             }
 
             @Override
             public void onFailure(Call<Authors> call, Throwable t) {
-
             }
         });
     }

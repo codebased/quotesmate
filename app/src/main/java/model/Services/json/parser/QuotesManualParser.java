@@ -38,4 +38,9 @@ public class QuotesManualParser implements IParser {
 
         return null;
     }
+
+    @Override
+    public <T> String serializeList(List<T> items) {
+        return null;
+    }
 }

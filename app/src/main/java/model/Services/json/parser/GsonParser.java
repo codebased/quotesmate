@@ -11,7 +11,16 @@ public class GsonParser implements IParser {
     public <T> List<T> deserializeList(String json) {
         //Gson gson = new GsonBuilder().excludeFieldsWithModifiers(Modifier.PRIVATE).create();
         Gson gson = new Gson();
-        Type type = (new TypeToken<List<T>>() {}).getType();
-        return  gson.fromJson(json, type);
+        Type type = (new TypeToken<List<T>>() {
+        }).getType();
+        return gson.fromJson(json, type);
+    }
+
+    @Override
+    public <T> String serializeList(List<T> items) {
+        Gson gson = new Gson();
+        Type type = (new TypeToken<List<T>>() {
+        }).getType();
+        return gson.toJson(items, type);
     }
 }

@@ -1,10 +1,9 @@
 package fragments;
 
-import android.support.v7.widget.LinearLayoutManager;
-
 import com.imcodebased.quotesmate.R;
 
 import activites.QuoteListActivity;
+import helpers.IntentUtil;
 import helpers.StringUtil;
 import model.Quote;
 
@@ -42,7 +41,7 @@ public class QuoteListFragment extends BaseListFragment<Quote> {
 
     @Override
     public void onItemClicked(Quote item) {
-
+        startActivity(IntentUtil.createShareIntent(item.getQuote()));
     }
 
     @Override

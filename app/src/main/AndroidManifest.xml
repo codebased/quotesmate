@@ -10,6 +10,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name="activites.QuoteListActivity"/>
+        <activity android:name="activites.NewQuoteActivity"/>
         <activity android:name=".OldQuoteListActivity">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN"/>-->

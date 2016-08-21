@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface IParser {
     <T> List<T> deserializeList(String json);
+
+    <T> String serializeList(List<T> items);
 }
