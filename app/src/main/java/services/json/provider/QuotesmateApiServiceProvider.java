@@ -1,24 +1,18 @@
-package model.services.json.provider;
+package services.json.provider;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.Preference;
-import android.preference.PreferenceManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import helpers.StringUtil;
 import model.Author;
 import model.Authors;
 import model.Genre;
 import model.Genres;
 import model.Quote;
 import model.Quotes;
-import model.services.json.DataCallback;
-import model.services.json.parser.GsonParser;
-import model.services.json.provider.http.QuoteHttpService;
-import model.services.json.provider.http.ServiceGenerator;
+import services.json.DataCallback;
+import services.json.provider.http.QuoteHttpService;
+import services.json.provider.http.ServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,7 +20,7 @@ import services.IStore;
 import services.SharedPreferenceStore;
 
 
-public class RetroServiceJsonProvider implements IJsonProvider {
+public class QuotesmateApiServiceProvider implements IJsonProvider {
 
     QuoteHttpService quoteHttpService = ServiceGenerator.createService(QuoteHttpService.class);
 

@@ -5,11 +5,12 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import helpers.StringUtil;
 import model.Quote;
-import model.services.json.parser.GsonParser;
+import services.json.parser.GsonParser;
 
 public class SharedPreferenceStore implements IStore {
 
@@ -21,13 +22,26 @@ public class SharedPreferenceStore implements IStore {
     }
 
     @Override
-    public void saveFavouriteQuotes(List<Quote> quotes) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+    public void saveFavouriteQuote(Quote quote) {
+        List<Quote> quotes = new ArrayList<>(1);
+        Collections.fill(quotes, quote);
 
-        if (quotes == null) quotes = new ArrayList<>();
+        saveFavouriteQuotes(quotes);
+    }
+
+    @Override
+    public void saveFavouriteQuotes(List<Quote> newQuotes) {
+
+        if (newQuotes == null) newQuotes = new ArrayList<>();
+
+        List<Quote> quotes = getFavouriteQuotes();
+        Collections.copy(quotes, newQuotes);
 
         GsonParser gsonParser = new GsonParser();
-        sharedPreferences.edit().putString(QUOTE_LIST, gsonParser.serializeList(quotes)).commit();
+        String quoteString = gsonParser.serializeList(quotes);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        preferences.edit().putString(QUOTE_LIST, quoteString).commit();
     }
 
     @Override
@@ -44,5 +58,27 @@ public class SharedPreferenceStore implements IStore {
         }
 
         return quotes;
+    }
+
+    @Override
+    public void deleteQuote(int id) {
+
+        List<Quote> quotes = getFavouriteQuotes();
+        for (Quote quote :
+                quotes) {
+            if (quote.getId() == id) {
+                quotes.remove(quote);
+            }
+        }
+
+        saveFavouriteQuotes(quotes);
+    }
+
+    @Override
+    public void deleteQuotes(int... ids) {
+        for (int id :
+                ids) {
+            deleteQuote(id);
+        }
     }
 }

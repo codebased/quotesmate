@@ -1,4 +1,4 @@
-package model.services.json.parser;
+package services.json.parser;
 
 import java.util.List;
 

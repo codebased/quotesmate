@@ -11,15 +11,6 @@
 
         <activity android:name="activites.QuoteListActivity"/>
         <activity android:name="activites.NewQuoteActivity"/>
-        <activity android:name=".OldQuoteListActivity">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN"/>-->
-            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity
-            android:name=".NewQuoteActivity"
-            android:label="New Quote"/>
         <activity
             android:name="activites.TabMainActivity"
             android:label="Quotesmate">

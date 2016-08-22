@@ -1,4 +1,4 @@
-package model.services.json;
+package services.json;
 
 public interface DataCallback<T> {
     void onSuccess(T result);

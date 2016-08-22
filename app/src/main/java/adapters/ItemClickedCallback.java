@@ -1,8 +1,6 @@
 package adapters;
 
-/**
- * Created by codebased on 14/07/16.
- */
+// TODO: 22/08/16 replace with event bus
 public interface ItemClickedCallback {
     void onClick(int position);
 }

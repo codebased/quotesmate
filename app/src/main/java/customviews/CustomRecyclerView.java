@@ -7,9 +7,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewStub;
 
-/**
- * Created by codebased on 14/07/16.
- */
 public  class CustomRecyclerView extends RecyclerView {
 
     private View mEmptyStateView;
@@ -54,11 +51,11 @@ public  class CustomRecyclerView extends RecyclerView {
             setVisibility(showEmptyStateView ? GONE : VISIBLE);
         }
     }
-    public void setEmtpyStateView(View view) {
+    public void setEmptyStateView(View view) {
         this.mEmptyStateView = view;
     }
 
-    public void setEmtpyStateViewStub(ViewStub view) {
+    public void setEmptyStateViewStub(ViewStub view) {
         this.mEmptyStateView = view.inflate();
     }
 

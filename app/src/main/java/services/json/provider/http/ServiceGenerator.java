@@ -1,4 +1,4 @@
-package model.services.json.provider.http;
+package services.json.provider.http;
 
 import android.util.Base64;
 

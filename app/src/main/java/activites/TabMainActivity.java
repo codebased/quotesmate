@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,13 +16,12 @@ import java.util.List;
 
 import adapters.TabFragmentPagerAdapter;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import fragments.AuthorListFragment;
 import fragments.FavouriteListFragment;
 import fragments.GenreListFragment;
 import fragments.QuoteListFragment;
 
-public class TabMainActivity extends BaseActivity {
+public class TabMainActivity extends BaseToolbarActivity {
 
     @BindView(R.id.tabsView)
     protected TabLayout tabView;
@@ -42,14 +40,13 @@ public class TabMainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tab);
+    }
 
-        ButterKnife.bind(this);
-
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         toolbarView.setTitle(R.string.title_activity_tab_main);
-        setSupportActionBar(toolbarView);
-
         prepareData();
-
         mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
 
         viewPagerView.setAdapter(mTabFragmentPagerAdapter);

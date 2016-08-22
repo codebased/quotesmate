@@ -1,4 +1,4 @@
-package model.services.json;
+package services.json;
 
 import android.content.Context;
 
@@ -7,10 +7,10 @@ import java.util.List;
 import model.Author;
 import model.Genre;
 import model.Quote;
-import model.services.IDataLoader;
-import model.services.json.parser.IParser;
-import model.services.json.parser.QuotesManualParser;
-import model.services.json.provider.IJsonProvider;
+import services.IDataLoader;
+import services.json.parser.GsonParser;
+import services.json.parser.IParser;
+import services.json.provider.IJsonProvider;
 
 public class JsonDataLoader implements IDataLoader {
 
@@ -21,7 +21,7 @@ public class JsonDataLoader implements IDataLoader {
     public JsonDataLoader(Context context, IJsonProvider jsonProvider) {
         this.jsonProvider = jsonProvider;
         this.context = context;
-        parser = new QuotesManualParser();
+        parser = new GsonParser();
     }
 
     @Override
@@ -35,6 +35,7 @@ public class JsonDataLoader implements IDataLoader {
 
             @Override
             public void onFailure(String reason) {
+                callback.onFailure(reason);
             }
         });
     }
@@ -49,6 +50,7 @@ public class JsonDataLoader implements IDataLoader {
 
             @Override
             public void onFailure(String reason) {
+                callback.onFailure(reason);
             }
         });
     }
@@ -65,6 +67,7 @@ public class JsonDataLoader implements IDataLoader {
 
             @Override
             public void onFailure(String reason) {
+                callback.onFailure(reason);
             }
         });
 
@@ -82,6 +85,7 @@ public class JsonDataLoader implements IDataLoader {
 
             @Override
             public void onFailure(String reason) {
+                callback.onFailure(reason);
             }
         });
     }
@@ -97,6 +101,7 @@ public class JsonDataLoader implements IDataLoader {
 
             @Override
             public void onFailure(String reason) {
+                callback.onFailure(reason);
             }
         });
     }
@@ -112,6 +117,7 @@ public class JsonDataLoader implements IDataLoader {
 
             @Override
             public void onFailure(String reason) {
+                callback.onFailure(reason);
             }
         });
     }

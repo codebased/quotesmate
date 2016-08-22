@@ -1,4 +1,4 @@
-package model.services.json.parser;
+package services.json.parser;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

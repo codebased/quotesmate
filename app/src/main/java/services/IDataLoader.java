@@ -1,11 +1,11 @@
-package model.services;
+package services;
 
 import java.util.List;
 
 import model.Author;
 import model.Genre;
 import model.Quote;
-import model.services.json.DataCallback;
+import services.json.DataCallback;
 
 public interface IDataLoader {
 

@@ -1,18 +1,12 @@
 package fragments;
 
 import android.content.Intent;
-import android.support.v7.widget.LinearLayoutManager;
 
 import com.imcodebased.quotesmate.R;
 
-import java.util.List;
-
 import activites.QuoteListActivity;
-import adapters.CustomRecyclerAdapter;
-import adapters.ItemClickedCallback;
 import helpers.StringUtil;
 import model.Author;
-import model.services.json.DataCallback;
 
 public class AuthorListFragment extends BaseListFragment<Author> {
 

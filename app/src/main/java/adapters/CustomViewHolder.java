@@ -7,11 +7,6 @@ import android.widget.TextView;
 
 import com.imcodebased.quotesmate.R;
 
-import helpers.IntentUtil;
-
-/**
- * Created by codebased on 14/07/16.
- */
 public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final TextView headerView;
     private final TextView subHeaderView;

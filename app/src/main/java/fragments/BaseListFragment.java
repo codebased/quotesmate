@@ -21,10 +21,10 @@ import adapters.ItemClickedCallback;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import customviews.CustomRecyclerView;
-import model.services.IDataLoader;
-import model.services.json.DataCallback;
-import model.services.json.JsonDataLoader;
-import model.services.json.provider.RetroServiceJsonProvider;
+import services.IDataLoader;
+import services.json.DataCallback;
+import services.json.JsonDataLoader;
+import services.json.provider.QuotesmateApiServiceProvider;
 
 public abstract class BaseListFragment<T> extends Fragment implements SwipeRefreshLayout.OnRefreshListener, DataCallback<List<T>> {
 
@@ -57,10 +57,10 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         super.onViewCreated(view, savedInstanceState);
 
 
-        listView.setEmtpyStateView(emptyListView);
+        listView.setEmptyStateView(emptyListView);
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
         listView.setHasFixedSize(false);
-        mDataLoader = new JsonDataLoader(view.getContext(), new RetroServiceJsonProvider());
+        mDataLoader = new JsonDataLoader(view.getContext(), new QuotesmateApiServiceProvider());
         swipeRefreshView.setOnRefreshListener(this);
     }
 
