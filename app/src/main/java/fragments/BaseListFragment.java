@@ -1,12 +1,15 @@
 package fragments;
 
 import android.app.ProgressDialog;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import adapters.CustomRecyclerAdapter;
+import adapters.CustomViewHolder;
 import adapters.ItemClickedCallback;
+import adapters.ItemOffsetDecoration;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import customviews.CustomRecyclerView;
@@ -58,7 +63,9 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
 
         listView.setEmptyStateView(emptyListView);
-        listView.setLayoutManager(new LinearLayoutManager(getContext()));
+        listView.setLayoutManager(getLayoutManager());
+        listView.addItemDecoration(getItemDecoration());
+
         listView.setHasFixedSize(false);
         mDataLoader = new JsonDataLoader(view.getContext(), new QuotesmateApiServiceProvider());
         swipeRefreshView.setOnRefreshListener(this);
@@ -87,13 +94,18 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     public void onSuccess(List<T> result) {
 
         items = result;
-        adapter = new CustomRecyclerAdapter<T>(items, new ItemClickedCallback() {
+        adapter = new CustomRecyclerAdapter<T>(items, getListItemLayout(), new ItemClickedCallback() {
             @Override
-            public void onClick(int position) {
-                onItemClicked(items.get(position));
+            public void onClick(View v, int position) {
+                onItemClicked(v, items.get(position));
 //                startActivity(IntentUtil.createShareIntent(items.get(position).toString()));
             }
         }) {
+            @Override
+            protected void onPostBindViewHolder(CustomViewHolder holder, int position) {
+                BaseListFragment.this.onPostBindView(holder, position);
+            }
+
             @Override
             public String getHeader(T item) {
                 return BaseListFragment.this.getHeader(item);
@@ -103,6 +115,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
             public String getSubHeader(T item) {
                 return BaseListFragment.this.getSubHeader(item);
             }
+
         };
 
         listView.setAdapter(adapter);
@@ -110,14 +123,23 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         onPostData();
     }
 
+    protected abstract void onPostBindView(CustomViewHolder holder, int position);
+
+    protected abstract int getListItemLayout();
+
     @Override
     public void onFailure(String error) {
-        adapter = new CustomRecyclerAdapter<T>(new ArrayList<T>(), new ItemClickedCallback() {
+        adapter = new CustomRecyclerAdapter<T>(new ArrayList<T>(), getListItemLayout(), new ItemClickedCallback() {
             @Override
-            public void onClick(int position) {
+            public void onClick(View v, int position) {
 
             }
         }) {
+            @Override
+            protected void onPostBindViewHolder(CustomViewHolder holder, int position) {
+
+            }
+
             @Override
             public String getHeader(T item) {
                 return null;
@@ -136,7 +158,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
     public abstract String getSubHeader(T item);
 
-    public abstract void onItemClicked(T item);
+    public abstract void onItemClicked(View v, T item);
 
     public void onPreInit() {
 
@@ -152,5 +174,15 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
     protected void hideProgressDialog() {
         mProgressDialog.hide();
+    }
+
+    public RecyclerView.LayoutManager getLayoutManager() {
+        return new LinearLayoutManager(getContext());
+    }
+
+    public RecyclerView.ItemDecoration getItemDecoration(){
+        return new RecyclerView.ItemDecoration() {
+
+        };
     }
 }

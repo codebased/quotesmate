@@ -1,4 +1,4 @@
-package services;
+package storage;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -127,7 +127,37 @@ public class SqliteStore implements IStore {
             // Specify arguments in placeholder order.
             String[] selectionArgs = {String.valueOf(id)};
 
+            String[] columns = {String.valueOf(id)};
+
+
             db.delete(FavouriteQuoteContract.TABLE_NAME, selection, selectionArgs);
+        }
+
+        public Quote find(int id) {
+            SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+            // Define 'where' part of query.
+            String selection = FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_ID + " LIKE ?";
+
+            // Specify arguments in placeholder order.
+            String[] selectionArgs = {String.valueOf(id)};
+
+            String[] projection = {
+                    FavouriteQuoteContract.FavouriteQuoteEntry._ID,
+                    FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_QUOTE,
+                    FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_AUTHOR,
+                    FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_GENRE,
+            };
+            Cursor c = db.query(FavouriteQuoteContract.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
+            Quote quote = null;
+            if (c.moveToNext()) {
+                quote = new Quote();
+                quote.setQuote(c.getString(c.getColumnIndexOrThrow(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_QUOTE)));
+                quote.setAuthor(c.getString(c.getColumnIndexOrThrow(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_GENRE)));
+                quote.setGenre(c.getString(c.getColumnIndexOrThrow(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_AUTHOR)));
+            }
+
+            return quote;
         }
     }
 
@@ -148,6 +178,11 @@ public class SqliteStore implements IStore {
     @Override
     public List<Quote> getFavouriteQuotes() {
         return mf.getQuotes();
+    }
+
+    @Override
+    public boolean hasQuote(int id) {
+        return mf.find(id) != null;
     }
 
     @Override

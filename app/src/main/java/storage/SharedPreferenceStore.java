@@ -1,4 +1,4 @@
-package services;
+package storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -58,6 +58,18 @@ public class SharedPreferenceStore implements IStore {
         }
 
         return quotes;
+    }
+
+    @Override
+    public boolean hasQuote(int id) {
+        List<Quote> quotes = getFavouriteQuotes();
+
+        for (Quote q :
+                quotes) {
+            if (q.getId() == id) return true;
+        }
+
+        return false;
     }
 
     @Override

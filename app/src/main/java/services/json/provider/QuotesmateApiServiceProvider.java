@@ -16,8 +16,8 @@ import services.json.provider.http.ServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import services.IStore;
-import services.SharedPreferenceStore;
+import storage.IStore;
+import storage.SharedPreferenceStore;
 
 
 public class QuotesmateApiServiceProvider implements IJsonProvider {

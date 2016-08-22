@@ -1,7 +1,10 @@
 package fragments;
 
+import android.view.View;
+
 import com.imcodebased.quotesmate.R;
 
+import adapters.CustomViewHolder;
 import model.Quote;
 
 public class FavouriteListFragment extends BaseListFragment<Quote> {
@@ -18,6 +21,16 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
     }
 
     @Override
+    protected void onPostBindView(CustomViewHolder holder, int position) {
+
+    }
+
+    @Override
+    protected int getListItemLayout() {
+        return R.layout.list_quote_item;
+    }
+
+    @Override
     public String getHeader(Quote item) {
         return item.getQuote();
     }
@@ -28,7 +41,7 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
     }
 
     @Override
-    public void onItemClicked(Quote item) {
+    public void onItemClicked(View v, Quote item) {
 
     }
 

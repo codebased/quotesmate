@@ -1,8 +1,10 @@
-package services;
+package storage;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import storage.SqliteStore;
 
 public class QuoteReaderDbHelper extends SQLiteOpenHelper {
 
