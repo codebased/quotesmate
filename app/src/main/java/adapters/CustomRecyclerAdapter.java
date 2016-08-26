@@ -1,5 +1,7 @@
 package adapters;
 
+import android.content.ContentValues;
+import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +10,14 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import model.Quote;
+import storage.tables.FavouriteQuoteContract;
+
 public abstract class CustomRecyclerAdapter<T> extends RecyclerView.Adapter<CustomViewHolder>   {
+
+    private static final String PROVIDER_NAME = "com.imcodebased.quotesmate.favouritequotes";
+
+    private static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/quotes");
 
     private final ItemClickedCallback ItemClickedCallback;
     private final int resource;
@@ -23,7 +32,17 @@ public abstract class CustomRecyclerAdapter<T> extends RecyclerView.Adapter<Cust
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(this.resource, parent, false);
-        return new CustomViewHolder(v, this.ItemClickedCallback);
+        return new CustomViewHolder(v, this.ItemClickedCallback, new FavouriteItemClickedCallback() {
+            @Override
+            public void onClick(View v, Quote q) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_AUTHOR, q.getAuthor());
+                contentValues.put(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_GENRE, q.getGenre());
+                contentValues.put(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_QUOTE, q.getQuote());
+                contentValues.put(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_ID, q.getId());
+                v.getContext().getContentResolver().insert(CONTENT_URI, contentValues);
+            }
+        });
     }
 
     @Override

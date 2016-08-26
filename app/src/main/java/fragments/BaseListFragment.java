@@ -34,7 +34,7 @@ import services.json.provider.QuotesmateApiServiceProvider;
 public abstract class BaseListFragment<T> extends Fragment implements SwipeRefreshLayout.OnRefreshListener, DataCallback<List<T>> {
 
     @BindView(R.id.listView)
-    protected CustomRecyclerView listView;
+    protected CustomRecyclerView mRecyclerView;
 
     @BindView(R.id.swipeRefreshView)
     protected SwipeRefreshLayout swipeRefreshView;
@@ -62,11 +62,11 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         super.onViewCreated(view, savedInstanceState);
 
 
-        listView.setEmptyStateView(emptyListView);
-        listView.setLayoutManager(getLayoutManager());
-        listView.addItemDecoration(getItemDecoration());
+        mRecyclerView.setEmptyStateView(emptyListView);
+        mRecyclerView.setLayoutManager(getLayoutManager());
+        mRecyclerView.addItemDecoration(getItemDecoration());
 
-        listView.setHasFixedSize(false);
+        mRecyclerView.setHasFixedSize(false);
         mDataLoader = new JsonDataLoader(view.getContext(), new QuotesmateApiServiceProvider());
         swipeRefreshView.setOnRefreshListener(this);
     }
@@ -118,7 +118,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
         };
 
-        listView.setAdapter(adapter);
+        mRecyclerView.setAdapter(adapter);
 
         onPostData();
     }
@@ -182,7 +182,6 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
     public RecyclerView.ItemDecoration getItemDecoration(){
         return new RecyclerView.ItemDecoration() {
-
         };
     }
 }

@@ -34,6 +34,7 @@ public class QuoteListFragment extends BaseListFragment<Quote> {
 
     @Override
     protected void onPostBindView(CustomViewHolder holder, int position) {
+        holder.setQuote(items.get(position));
 
     }
 

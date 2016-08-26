@@ -1,14 +1,20 @@
 package fragments;
 
+import android.database.Cursor;
+import android.net.Uri;
 import android.view.View;
 
 import com.imcodebased.quotesmate.R;
 
 import adapters.CustomViewHolder;
+import adapters.FavouriteQuotesCursorAdapter;
+import adapters.ItemClickedCallback;
 import model.Quote;
 
-public class FavouriteListFragment extends BaseListFragment<Quote> {
+public class FavouriteListFragment extends BaseListFragment<Quote> implements ItemClickedCallback{
 
+    private static final String PROVIDER_NAME = "com.imcodebased.quotesmate.favouritequotes";
+    private static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/quotes");
     @Override
     public int getLayout() {
         return R.layout.recylerviewlist;
@@ -17,7 +23,11 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
     @Override
     public void initializeData() {
         super.initializeData();
-        mDataLoader.getAllFavouriteQuoteAsync(this);
+        Cursor cursor = getActivity().getContentResolver().query(CONTENT_URI, null, null, null, null);
+
+        mRecyclerView.setAdapter(new FavouriteQuotesCursorAdapter(getActivity(), cursor, this));
+        onPostData();
+//        mDataLoader.getAllFavouriteQuoteAsync(this);
     }
 
     @Override
@@ -61,5 +71,9 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
     public void onPostData() {
         super.onPostData();
         this.hideProgressDialog();
+    }
+
+    @Override
+    public void onClick(View v, int position) {
     }
 }

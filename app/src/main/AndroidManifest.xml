@@ -9,6 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <provider
+            android:name="contentproviders.FavouriteQuoteContentProvider"
+            android:authorities="com.imcodebased.quotesmate.favouritequotes"/>
+
         <activity android:name="activites.QuoteListActivity"/>
         <activity android:name="activites.NewQuoteActivity"/>
         <activity

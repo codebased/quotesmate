@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import storage.SqliteStore;
+import storage.tables.FavouriteQuoteContract;
 
 public class QuoteReaderDbHelper extends SQLiteOpenHelper {
 
@@ -18,12 +19,12 @@ public class QuoteReaderDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SqliteStore.FavouriteQuoteContract.FavouriteQuoteEntry.SQL_CREATE_ENTRIES);
+        db.execSQL(FavouriteQuoteContract.FavouriteQuoteEntry.SQL_CREATE_ENTRIES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SqliteStore.FavouriteQuoteContract.FavouriteQuoteEntry.SQL_DELETE_ENTRIES);
+        db.execSQL(FavouriteQuoteContract.FavouriteQuoteEntry.SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 

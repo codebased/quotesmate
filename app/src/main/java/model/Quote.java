@@ -1,14 +1,18 @@
 package model;
 
+import android.database.Cursor;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import storage.tables.FavouriteQuoteContract;
 
 /**
  * Created by codebased on 13/07/16.
  */
 public class Quote {
 
-//    @SerializedName("IDD")
+    //    @SerializedName("IDD")
     protected int id;
     @Expose(serialize = false, deserialize = true)
     protected String quote;
@@ -61,5 +65,13 @@ public class Quote {
         this.quote = quote;
         this.author = author;
         this.genre = genre;
+    }
+
+    public static Quote fromCursor(Cursor cursor) {
+        int id = cursor.getInt(cursor.getColumnIndex(FavouriteQuoteContract.FavouriteQuoteEntry._ID));
+        String quote = cursor.getString(cursor.getColumnIndex(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_QUOTE));
+        String author = cursor.getString(cursor.getColumnIndex(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_AUTHOR));
+        String genre = cursor.getString(cursor.getColumnIndex(FavouriteQuoteContract.FavouriteQuoteEntry.COLUMN_NAME_GENRE));
+        return new Quote(id, quote, author, genre);
     }
 }

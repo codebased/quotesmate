@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.imcodebased.quotesmate.R;
 
 import helpers.IntentUtil;
+import model.Quote;
 import storage.IStore;
 import storage.SharedPreferenceStore;
 
@@ -19,8 +20,10 @@ public class CustomViewHolder extends RecyclerView.ViewHolder implements View.On
     private final TextView subHeaderView;
     private final ImageView img;
     private final ItemClickedCallback itemClickedCallback;
+    private final FavouriteItemClickedCallback favouriteItemClickedCallback;
+    private Quote mQuote;
 
-    public CustomViewHolder(View itemView, ItemClickedCallback itemClickedCallback) {
+    public CustomViewHolder(View itemView, ItemClickedCallback itemClickedCallback, final FavouriteItemClickedCallback favouriteItemClickedCallback ) {
         super(itemView);
 
         this.headerView = (TextView) itemView.findViewById(R.id.headerView);
@@ -33,9 +36,14 @@ public class CustomViewHolder extends RecyclerView.ViewHolder implements View.On
             @Override
             public void onClick(View v) {
                 // @// TODO: 22/08/16 cange to default.
+                if ( favouriteItemClickedCallback != null ){
+                    favouriteItemClickedCallback.onClick(v, mQuote);
+                }
                 CustomViewHolder.this.img.getDrawable().setTint(Color.RED);
             }
         });
+
+        this.favouriteItemClickedCallback = favouriteItemClickedCallback;
 
     }
 
@@ -58,5 +66,9 @@ public class CustomViewHolder extends RecyclerView.ViewHolder implements View.On
         }
 
 //        v.getContext().startActivity(IntentUtil.createShareIntent(headerView.getText().toString()));
+    }
+
+    public void setQuote(Quote quote) {
+        mQuote = quote;
     }
 }
