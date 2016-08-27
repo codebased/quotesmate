@@ -27,8 +27,6 @@ public class BaseToolbarActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbarView);
         mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setCancelable(false);
-
     }
 
     @Override

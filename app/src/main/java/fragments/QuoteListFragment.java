@@ -65,7 +65,7 @@ public class QuoteListFragment extends BaseListFragment<Quote> {
                 store = new SqliteStore(v.getContext());
             }
 
-            if ( store.hasQuote(item.getId())){
+            if (store.hasQuote(item.getId())) {
             } else {
                 store.saveFavouriteQuote(item);
             }

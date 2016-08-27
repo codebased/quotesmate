@@ -1,10 +1,12 @@
 package activites;
 
 import android.app.ProgressDialog;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -34,7 +36,9 @@ public class TabMainActivity extends BaseToolbarActivity {
     protected Toolbar toolbarView;
 
     protected List<Fragment> mFragmentList;
+
     protected List<String> mTitleList;
+
     protected TabFragmentPagerAdapter mTabFragmentPagerAdapter;
 
 
@@ -47,14 +51,14 @@ public class TabMainActivity extends BaseToolbarActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        toolbarView.setTitle(R.string.title_activity_tab_main);
-        prepareData();
+        this.toolbarView.setTitle(R.string.title_activity_tab_main);
+        this.populateFragment();
         mTabFragmentPagerAdapter = new TabFragmentPagerAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
 
         viewPagerView.setAdapter(mTabFragmentPagerAdapter);
         tabView.setupWithViewPager(viewPagerView);
-
-        setTabIcons();
+        this.setTabIcons();
+        this.setTabListener();
     }
 
     @Override
@@ -67,7 +71,7 @@ public class TabMainActivity extends BaseToolbarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void prepareData() {
+    private void populateFragment() {
 
         mFragmentList = new ArrayList<>();
         mTitleList = new ArrayList<>();
@@ -78,17 +82,48 @@ public class TabMainActivity extends BaseToolbarActivity {
         setFragmentData(new GenreListFragment(), R.string.title_tab_genres);
     }
 
-    private void setTabIcons() {
-        tabView.getTabAt(0).setIcon(R.drawable.ic_favourite);
-        tabView.getTabAt(1).setIcon(R.drawable.ic_random);
-        tabView.getTabAt(2).setIcon(R.drawable.ic_author);
-        tabView.getTabAt(3).setIcon(R.drawable.ic_genre);
-    }
-
     private void setFragmentData(Fragment fragment, int res) {
         mFragmentList.add(fragment);
         mTitleList.add(getString(res));
     }
 
+
+    private void setTabIcons() {
+        tabView.getTabAt(0).setIcon(R.drawable.ic_favourite);
+        tabView.getTabAt(1).setIcon(R.drawable.ic_random);
+        tabView.getTabAt(2).setIcon(R.drawable.ic_author);
+        tabView.getTabAt(3).setIcon(R.drawable.ic_genre);
+
+
+    }
+
+    private void setTabListener() {
+
+        int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.selectedTabColor);
+        tabView.getTabAt(0).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+        tabView.setOnTabSelectedListener(
+                new TabLayout.ViewPagerOnTabSelectedListener(viewPagerView) {
+
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        super.onTabSelected(tab);
+                        int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.selectedTabColor);
+                        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+                        super.onTabUnselected(tab);
+                        int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.tabColor);
+                        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+                        super.onTabReselected(tab);
+                    }
+                }
+        );
+    }
 
 }

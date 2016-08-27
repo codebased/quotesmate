@@ -73,7 +73,7 @@ public class AuthorListFragment extends BaseListFragment<Author> {
 
     @Override
     public RecyclerView.LayoutManager getLayoutManager() {
-       return new GridLayoutManager(getContext(), 2) ;
+        return new GridLayoutManager(getContext(), 2);
     }
 
     @Override
