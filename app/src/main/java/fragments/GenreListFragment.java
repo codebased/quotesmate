@@ -23,7 +23,6 @@ public class GenreListFragment extends BaseListFragment<Genre> {
     @Override
     public void initializeData() {
         super.initializeData();
-        if (items == null || items.size() == 0)
         mDataLoader.getAllGenreAsync(this);
     }
 

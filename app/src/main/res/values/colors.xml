@@ -5,6 +5,7 @@
     <color name="black_70">#b1000000</color>
     <color name="selectedTabColor">#FF5252</color>
     <color name="tabColor">#fcfcfc</color>
+    <color name="refresh_progress">@color/primary</color>
 
 
 </resources>

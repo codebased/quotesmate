@@ -26,7 +26,7 @@ public class BaseToolbarActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         ButterKnife.bind(this);
         setSupportActionBar(toolbarView);
-        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog = new ProgressDialog(this, R.style.AlertDialogCustom);
     }
 
     @Override

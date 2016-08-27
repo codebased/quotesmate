@@ -1,6 +1,5 @@
 package fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
@@ -8,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import activites.BaseToolbarActivity;
-import activites.TabMainActivity;
 import adapters.CustomRecyclerAdapter;
 import adapters.CustomViewHolder;
 import adapters.ItemClickedCallback;
@@ -65,6 +62,9 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         listView.setHasFixedSize(false);
         mDataLoader = new JsonDataLoader(view.getContext(), new QuotesmateApiServiceProvider());
         swipeRefreshView.setOnRefreshListener(this);
+
+        swipeRefreshView.setColorSchemeResources(
+                R.color.refresh_progress);
     }
 
     @Override

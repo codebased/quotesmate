@@ -1,6 +1,5 @@
 package activites;
 
-import android.app.ProgressDialog;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -93,8 +92,6 @@ public class TabMainActivity extends BaseToolbarActivity {
         tabView.getTabAt(1).setIcon(R.drawable.ic_random);
         tabView.getTabAt(2).setIcon(R.drawable.ic_author);
         tabView.getTabAt(3).setIcon(R.drawable.ic_genre);
-
-
     }
 
     private void setTabListener() {
