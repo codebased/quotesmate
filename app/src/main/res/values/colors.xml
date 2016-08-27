@@ -4,6 +4,8 @@
     <color name="black_90">#e5000000</color>
     <color name="black_70">#b1000000</color>
     <color name="selectedTabColor">#FF5252</color>
+    <color name="favouriteItemColor">#FF5252</color>
+    <color name="itemColor">#b4b1b1</color>
     <color name="tabColor">#fcfcfc</color>
     <color name="refresh_progress">@color/primary</color>
 

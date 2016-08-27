@@ -96,8 +96,11 @@ public class TabMainActivity extends BaseToolbarActivity {
 
     private void setTabListener() {
 
+
         int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.selectedTabColor);
-        tabView.getTabAt(0).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+//        tabView.getTabAt(tabView.getSelectedTabPosition()).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+//
+//        tabView.getTabAt(tabView.getSelectedTabPosition()).select();
         tabView.setOnTabSelectedListener(
                 new TabLayout.ViewPagerOnTabSelectedListener(viewPagerView) {
 
@@ -122,5 +125,4 @@ public class TabMainActivity extends BaseToolbarActivity {
                 }
         );
     }
-
 }
