@@ -14,6 +14,12 @@ import com.imcodebased.quotesmate.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import model.ResponseBase;
+import model.mail.EmailAddress;
+import model.mail.EmailNotificationMessage;
+import services.NotificationApiServiceProvider;
+import services.NotificationService;
+import services.json.DataCallback;
 
 public class NewQuoteActivity extends BaseToolbarActivity implements View.OnClickListener {
 
@@ -22,9 +28,6 @@ public class NewQuoteActivity extends BaseToolbarActivity implements View.OnClic
 
     @BindView(R.id.quoteMetabase)
     protected EditText quoteMetabaseView;
-
-    @BindView(R.id.progressBarView)
-    protected ProgressBar progressBarView;
 
     @BindView(R.id.buttonView)
     protected Button buttonView;
@@ -56,6 +59,28 @@ public class NewQuoteActivity extends BaseToolbarActivity implements View.OnClic
     }
 
     private void sendEmail() {
-        progressBarView.setVisibility(View.VISIBLE);
+        showProgressDialog("Please wait...");
+        NotificationService notificationService = new NotificationApiServiceProvider();
+        EmailNotificationMessage emailNotificationMessage = new EmailNotificationMessage();
+        emailNotificationMessage.setFromAddress(new EmailAddress("Amit", "codebased@hotmail.com"));
+        emailNotificationMessage.setNotificationType("email");
+        emailNotificationMessage.setReplyToAddress(new EmailAddress("Amit", "codebased@hotmail.com"));
+        emailNotificationMessage.setToAddress(new EmailAddress("Amit", "codebased@hotmail.com"));
+        emailNotificationMessage.setSubject("New Quote");
+        emailNotificationMessage.setEmailType("submitquote");
+        emailNotificationMessage.setBody(quoteMetabaseView.getText().toString() + "\n" + quoteView.getText().toString());
+        notificationService.sendEmail(emailNotificationMessage, "com.architectpack.quotesmate", new DataCallback<ResponseBase>() {
+            @Override
+            public void onSuccess(ResponseBase result) {
+                hideProgressDialog();
+            }
+
+            @Override
+            public void onFailure(String error) {
+
+                hideProgressDialog();
+            }
+        });
+
     }
 }

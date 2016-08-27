@@ -43,4 +43,17 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="textInputStyle" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/primary</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/primary</item>
+        <item name="colorControlNormal">@color/primary</item>
+        <item name="colorControlActivated">@color/primary_dark</item>
+        <item name="android:textColorHighlight">@color/primary</item>
+
+    </style>
+
+
 </resources>

@@ -1,5 +1,6 @@
 package model.mail;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,11 @@ public class EmailNotificationMessage extends NotificationMessage {
 
     public List<EmailAddress> getToAddress() {
         return toAddress;
+    }
+
+    public void setToAddress(EmailAddress toAddress) {
+        this.toAddress= new ArrayList<>();
+        this.toAddress.add(toAddress);
     }
 
     public void setToAddress(List<EmailAddress> toAddress) {
