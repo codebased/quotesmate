@@ -9,8 +9,12 @@ import adapters.CustomViewHolder;
 import helpers.IntentUtil;
 import helpers.StringUtil;
 import model.Quote;
+import storage.IStore;
+import storage.SqliteStore;
 
 public class QuoteListFragment extends BaseListFragment<Quote> {
+
+    private IStore store;
 
     @Override
     public int getLayout() {
@@ -54,7 +58,20 @@ public class QuoteListFragment extends BaseListFragment<Quote> {
 
     @Override
     public void onItemClicked(View v, Quote item) {
-        startActivity(IntentUtil.createShareIntent(item.getQuote()));
+
+        if (v.getId() == R.id.leftImageView) {
+            if (store == null) {
+                // TODO: 26/08/16 dagger
+                store = new SqliteStore(v.getContext());
+            }
+
+            if ( store.hasQuote(item.getId())){
+            } else {
+                store.saveFavouriteQuote(item);
+            }
+        } else {
+            startActivity(IntentUtil.createShareIntent(item.getQuote()));
+        }
     }
 
     @Override

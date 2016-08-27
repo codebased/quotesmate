@@ -28,14 +28,15 @@ public class CustomViewHolder extends RecyclerView.ViewHolder implements View.On
         this.img = (ImageView) itemView.findViewById(R.id.leftImageView);
         this.itemClickedCallback = itemClickedCallback;
         itemView.setOnClickListener(this);
-        this.img.setOnClickListener(new View.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                // @// TODO: 22/08/16 cange to default.
-                CustomViewHolder.this.img.getDrawable().setTint(Color.RED);
-            }
-        });
+        this.img.setOnClickListener(this);
+//        this.img.setOnClickListener(new View.OnClickListener() {
+//            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onClick(View v) {
+//                // @// TODO: 22/08/16 cange to default.
+//                CustomViewHolder.this.img.getDrawable().setTint(Color.RED);
+//            }
+//        });
 
     }
 

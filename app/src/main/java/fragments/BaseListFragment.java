@@ -1,15 +1,14 @@
 package fragments;
 
-import android.app.ProgressDialog;
-import android.graphics.Rect;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +18,11 @@ import com.imcodebased.quotesmate.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import activites.BaseToolbarActivity;
+import activites.TabMainActivity;
 import adapters.CustomRecyclerAdapter;
 import adapters.CustomViewHolder;
 import adapters.ItemClickedCallback;
-import adapters.ItemOffsetDecoration;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import customviews.CustomRecyclerView;
@@ -42,8 +42,6 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     @BindView(R.id.empty)
     protected View emptyListView;
 
-    private ProgressDialog mProgressDialog;
-
     protected List<T> items;
     protected CustomRecyclerAdapter<T> adapter;
     protected IDataLoader mDataLoader;
@@ -53,14 +51,12 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(), null);
         ButterKnife.bind(this, view);
-        mProgressDialog = new ProgressDialog(getContext());
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         listView.setEmptyStateView(emptyListView);
         listView.setLayoutManager(getLayoutManager());
@@ -168,21 +164,28 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     }
 
     protected void showProgressDialog(String message) {
-        mProgressDialog.setMessage(message);
-        mProgressDialog.show();
+        if (isAdded()) {
+            ((BaseToolbarActivity) getActivity()).showProgressDialog(message);
+        }
     }
 
     protected void hideProgressDialog() {
-        mProgressDialog.hide();
+        if (isAdded()) {
+            ((BaseToolbarActivity) getActivity()).hideProgressDialog();
+        }
     }
 
     public RecyclerView.LayoutManager getLayoutManager() {
         return new LinearLayoutManager(getContext());
     }
 
-    public RecyclerView.ItemDecoration getItemDecoration(){
+    public RecyclerView.ItemDecoration getItemDecoration() {
         return new RecyclerView.ItemDecoration() {
-
         };
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

@@ -5,9 +5,14 @@ import android.view.View;
 import com.imcodebased.quotesmate.R;
 
 import adapters.CustomViewHolder;
+import helpers.IntentUtil;
 import model.Quote;
+import storage.IStore;
+import storage.SqliteStore;
 
 public class FavouriteListFragment extends BaseListFragment<Quote> {
+
+    private IStore store;
 
     @Override
     public int getLayout() {
@@ -22,7 +27,6 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
 
     @Override
     protected void onPostBindView(CustomViewHolder holder, int position) {
-
     }
 
     @Override
@@ -42,7 +46,17 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
 
     @Override
     public void onItemClicked(View v, Quote item) {
+        if (v.getId() == R.id.leftImageView) {
+            if (store == null) {
+                // TODO: 26/08/16 dagger
+                store = new SqliteStore(v.getContext());
+            }
 
+            store.deleteQuote(item.getId());
+            onRefresh();
+        } else {
+            startActivity(IntentUtil.createShareIntent(item.getQuote()));
+        }
     }
 
     @Override

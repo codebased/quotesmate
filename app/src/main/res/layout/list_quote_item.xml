@@ -15,6 +15,7 @@
         android:layout_height="@dimen/left_image_height"
         android:layout_gravity="center"
         android:layout_marginLeft="@dimen/twodot"
+        android:clickable="true"
         android:padding="@dimen/onedot"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_heart"/>

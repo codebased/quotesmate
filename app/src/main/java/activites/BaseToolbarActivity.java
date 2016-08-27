@@ -1,5 +1,6 @@
 package activites;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,11 +19,16 @@ public class BaseToolbarActivity extends AppCompatActivity {
     @BindView(R.id.toolbarView)
     protected Toolbar toolbarView;
 
+    protected ProgressDialog mProgressDialog;
+
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         ButterKnife.bind(this);
         setSupportActionBar(toolbarView);
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setCancelable(false);
+
     }
 
     @Override
@@ -45,6 +51,17 @@ public class BaseToolbarActivity extends AppCompatActivity {
 
     private void openNewQuoteActivity() {
         startActivity(new Intent(this, NewQuoteActivity.class));
+    }
+
+    public void showProgressDialog(String message) {
+
+        this.mProgressDialog.setMessage(message);
+
+        this.mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        this.mProgressDialog.hide();
     }
 
 }

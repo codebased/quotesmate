@@ -1,5 +1,6 @@
 package activites;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -35,6 +36,7 @@ public class TabMainActivity extends BaseToolbarActivity {
     protected List<Fragment> mFragmentList;
     protected List<String> mTitleList;
     protected TabFragmentPagerAdapter mTabFragmentPagerAdapter;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,4 +89,6 @@ public class TabMainActivity extends BaseToolbarActivity {
         mFragmentList.add(fragment);
         mTitleList.add(getString(res));
     }
+
+
 }

@@ -18,6 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import storage.IStore;
 import storage.SharedPreferenceStore;
+import storage.SqliteStore;
 
 
 public class QuotesmateApiServiceProvider implements IJsonProvider {
@@ -42,7 +43,7 @@ public class QuotesmateApiServiceProvider implements IJsonProvider {
 
     @Override
     public void getFavouriteQuotesJsonAsync(Context context, DataCallback<List<Quote>> callback) {
-        IStore store = new SharedPreferenceStore(context);
+        IStore store = new SqliteStore(context);
         callback.onSuccess(store.getFavouriteQuotes());
     }
 
