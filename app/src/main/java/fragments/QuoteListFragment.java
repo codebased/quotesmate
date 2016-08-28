@@ -1,15 +1,22 @@
 package fragments;
 
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.imcodebased.quotesmate.R;
 
+import javax.inject.Inject;
+
 import activites.QuoteListActivity;
 import adapters.CustomViewHolder;
+import applications.MainApplication;
 import helpers.IntentUtil;
 import helpers.StringUtil;
 import model.Quote;
@@ -18,7 +25,16 @@ import storage.SqliteStore;
 
 public class QuoteListFragment extends BaseListFragment<Quote> {
 
-    private IStore store;
+    @Inject
+    protected IStore store;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        ((MainApplication) getActivity().getApplication()).getAppComponent().inject(this);
+        return view;
+    }
 
     @Override
     public int getLayout() {
@@ -28,7 +44,7 @@ public class QuoteListFragment extends BaseListFragment<Quote> {
     @Override
     public void initializeData() {
         super.initializeData();
-        store = new SqliteStore(getContext());
+
         String genre = getActivity().getIntent().getStringExtra(QuoteListActivity.EXTRA_GENRE);
         String author = getActivity().getIntent().getStringExtra(QuoteListActivity.EXTRA_AUTHOR);
 

@@ -1,23 +1,39 @@
 package fragments;
 
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.annotation.ColorRes;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.imcodebased.quotesmate.R;
 
+import javax.inject.Inject;
+
 import adapters.CustomViewHolder;
+import applications.MainApplication;
 import helpers.IntentUtil;
 import helpers.StringUtil;
 import model.Quote;
 import storage.IStore;
-import storage.SqliteStore;
 
 public class FavouriteListFragment extends BaseListFragment<Quote> {
 
-    private IStore store;
+    @Inject
+    protected IStore store;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        ((MainApplication) getActivity().getApplication()).getAppComponent().inject(this);
+
+        return view;
+    }
 
     @Override
     public int getLayout() {
@@ -54,11 +70,6 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
     @Override
     public void onItemClicked(View v, Quote item) {
         if (v.getId() == R.id.leftImageView) {
-            if (store == null) {
-                // TODO: 26/08/16 dagger
-                store = new SqliteStore(v.getContext());
-            }
-
             store.deleteQuote(item.getId());
             onRefresh();
         } else {

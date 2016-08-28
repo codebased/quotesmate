@@ -4,6 +4,8 @@ import android.content.Context;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import model.Author;
 import model.Authors;
 import model.Genre;
@@ -23,7 +25,13 @@ import storage.SqliteStore;
 
 public class QuotesmateApiServiceProvider implements IJsonProvider {
 
+    IStore store;
+
     QuoteHttpService quoteHttpService = ServiceGenerator.createService(QuoteHttpService.class);
+
+    public QuotesmateApiServiceProvider(IStore store){
+        this.store = store;
+    }
 
     @Override
     public void getQuotesJsonAsync(Context context, final DataCallback<List<Quote>> callback) {
@@ -43,7 +51,6 @@ public class QuotesmateApiServiceProvider implements IJsonProvider {
 
     @Override
     public void getFavouriteQuotesJsonAsync(Context context, DataCallback<List<Quote>> callback) {
-        IStore store = new SqliteStore(context);
         callback.onSuccess(store.getFavouriteQuotes());
     }
 

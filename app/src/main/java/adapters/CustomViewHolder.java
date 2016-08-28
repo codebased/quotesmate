@@ -33,7 +33,6 @@ public class CustomViewHolder extends RecyclerView.ViewHolder implements View.On
 //            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 //            @Override
 //            public void onClick(View v) {
-//                // @// TODO: 22/08/16 cange to default.
 //                CustomViewHolder.this.img.getDrawable().setTint(Color.RED);
 //            }
 //        });

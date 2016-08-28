@@ -1,6 +1,7 @@
 package storage;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.List;
 
@@ -11,9 +12,8 @@ public class SqliteStore implements IStore {
 
     private final FavouriteQuoteContract mf;
 
-    public SqliteStore(Context context) {
-        // TODO: 26/08/16  use dagger instead of new.
-        mf = new FavouriteQuoteContract(new QuoteReaderDbHelper(context));
+    public SqliteStore(SQLiteOpenHelper  sqLiteOpenHelper) {
+        mf = new FavouriteQuoteContract(sqLiteOpenHelper);
     }
 
     @Override

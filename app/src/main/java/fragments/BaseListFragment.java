@@ -16,16 +16,20 @@ import com.imcodebased.quotesmate.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import activites.BaseToolbarActivity;
 import adapters.CustomRecyclerAdapter;
 import adapters.CustomViewHolder;
 import adapters.ItemClickedCallback;
+import applications.MainApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import customviews.CustomRecyclerView;
 import services.IDataLoader;
 import services.json.DataCallback;
 import services.json.JsonDataLoader;
+import services.json.provider.IJsonProvider;
 import services.json.provider.QuotesmateApiServiceProvider;
 
 public abstract class BaseListFragment<T> extends Fragment implements SwipeRefreshLayout.OnRefreshListener, DataCallback<List<T>> {
@@ -39,6 +43,9 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     @BindView(R.id.empty)
     protected View emptyListView;
 
+    @Inject
+    protected IJsonProvider dataProvider;
+
     protected List<T> items;
     protected CustomRecyclerAdapter<T> adapter;
     protected IDataLoader mDataLoader;
@@ -48,6 +55,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(), null);
         ButterKnife.bind(this, view);
+
         return view;
     }
 
@@ -60,7 +68,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         listView.addItemDecoration(getItemDecoration());
 
         listView.setHasFixedSize(false);
-        mDataLoader = new JsonDataLoader(view.getContext(), new QuotesmateApiServiceProvider());
+        mDataLoader = new JsonDataLoader(view.getContext(), dataProvider);
         swipeRefreshView.setOnRefreshListener(this);
 
         swipeRefreshView.setColorSchemeResources(
