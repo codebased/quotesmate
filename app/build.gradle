@@ -5,6 +5,15 @@ android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
 
+    signingConfigs {
+
+        release {
+            storeFile file("quotesbite.keystore")
+            storePassword KEYSTORE_PASSWORD
+            keyAlias "quotesbite"
+            keyPassword KEY_PASSWORD
+        }
+    }
     defaultConfig {
         applicationId "com.imcodebased.quotesmate"
         minSdkVersion 14
@@ -19,6 +28,7 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }

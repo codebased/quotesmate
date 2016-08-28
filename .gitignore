@@ -7,3 +7,8 @@
 /build
 /captures
 /.idea
+gradle.properties
+quotesbite.jks
+*.apk
+app/*.apk
+app/*.apk
