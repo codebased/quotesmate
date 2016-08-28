@@ -21,7 +21,6 @@ import helpers.IntentUtil;
 import helpers.StringUtil;
 import model.Quote;
 import storage.IStore;
-import storage.SqliteStore;
 
 public class QuoteListFragment extends BaseListFragment<Quote> {
 

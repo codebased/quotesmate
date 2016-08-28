@@ -1,5 +1,7 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 /**
@@ -7,6 +9,7 @@ import java.util.List;
  */
 public class ResponseBase {
 
+    @SerializedName("messages")
     private List<Message> messages;
 
     public boolean isSuccess() {

@@ -4,23 +4,19 @@ import android.content.Context;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import model.Author;
 import model.Authors;
 import model.Genre;
 import model.Genres;
 import model.Quote;
 import model.Quotes;
-import services.json.DataCallback;
-import services.json.provider.http.QuoteHttpService;
-import services.json.provider.http.ServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import services.json.DataCallback;
+import services.json.provider.http.QuoteHttpService;
+import services.json.provider.http.ServiceGenerator;
 import storage.IStore;
-import storage.SharedPreferenceStore;
-import storage.SqliteStore;
 
 
 public class QuotesmateApiServiceProvider implements IJsonProvider {

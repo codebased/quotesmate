@@ -1,18 +1,11 @@
 package adapters;
 
-import android.annotation.TargetApi;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.imcodebased.quotesmate.R;
-
-import helpers.IntentUtil;
-import storage.IStore;
-import storage.SharedPreferenceStore;
 
 public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final TextView headerView;

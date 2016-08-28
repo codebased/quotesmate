@@ -70,3 +70,9 @@
 -keepclasseswithmembers class * {
     @retrofit2.http.* <methods>;
 }
+
+-dontwarn okio.**
+
+
+-keep class customviews** {*;}
+-keep class com.imcodebased.** {*;}

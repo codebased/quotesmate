@@ -1,6 +1,5 @@
 package storage;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.List;

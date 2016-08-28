@@ -1,10 +1,16 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by codebased on 26/02/16.
  */
 public class Message {
+
+    @SerializedName("description")
     private String description;
+
+    @SerializedName("type")
     private String type;
 
     public String getDescription() {

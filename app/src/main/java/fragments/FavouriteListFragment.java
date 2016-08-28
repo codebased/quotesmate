@@ -14,7 +14,6 @@ import com.imcodebased.quotesmate.R;
 
 import javax.inject.Inject;
 
-import activites.TabMainActivity;
 import adapters.CustomViewHolder;
 import applications.MainApplication;
 import helpers.IntentUtil;

@@ -8,12 +8,18 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Quote {
 
-//    @SerializedName("IDD")
+    @SerializedName("id")
     protected int id;
+
+    @SerializedName("quote")
     @Expose(serialize = false, deserialize = true)
     protected String quote;
+
+    @SerializedName("author")
     @Expose(serialize = false, deserialize = true)
     protected String author;
+
+    @SerializedName("genre")
     protected String genre;
 
     public String getQuote() {

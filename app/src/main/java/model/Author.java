@@ -1,8 +1,13 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Author {
 
+    @SerializedName("quotes")
     private String quotes;
+
+    @SerializedName("author")
     private String author;
 
     public String getQuotes() {

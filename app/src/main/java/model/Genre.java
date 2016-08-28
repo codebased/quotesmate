@@ -1,13 +1,16 @@
 package model;
 
-import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by codebased on 13/07/16.
  */
 public class Genre {
 
+    @SerializedName("genre")
     private String genre;
+
+    @SerializedName("quotes")
     private String quotes;
 
 

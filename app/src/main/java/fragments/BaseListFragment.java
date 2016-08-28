@@ -23,7 +23,6 @@ import activites.BaseToolbarActivity;
 import adapters.CustomRecyclerAdapter;
 import adapters.CustomViewHolder;
 import adapters.ItemClickedCallback;
-import applications.MainApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import customviews.CustomRecyclerView;
@@ -31,7 +30,6 @@ import services.IDataLoader;
 import services.json.DataCallback;
 import services.json.JsonDataLoader;
 import services.json.provider.IJsonProvider;
-import services.json.provider.QuotesmateApiServiceProvider;
 
 public abstract class BaseListFragment<T> extends Fragment implements SwipeRefreshLayout.OnRefreshListener, DataCallback<List<T>> {
 
