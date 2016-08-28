@@ -8,11 +8,13 @@
     <include layout="@layout/toolbar"/>
 
     <LinearLayout
+        android:id="@+id/mainLayoutView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff"
         android:orientation="vertical"
         android:padding="@dimen/twodot"
+        android:visibility="visible"
         android:weightSum="1">
 
         <android.support.design.widget.TextInputLayout
@@ -50,22 +52,44 @@
                 android:layout_weight="0.21"
                 android:hint="@string/new_quote_edit_textview_hint"
                 android:inputType="textMultiLine"
-                android:textColor="@color/primary"
-                android:textColorHighlight="@color/accent"
-                android:textColorHint="@color/accent"
                 android:maxLines="10"
                 android:minLines="1"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical"
+                android:textColor="@color/primary"
+                android:textColorHighlight="@color/accent"
+                android:textColorHint="@color/accent"/>
         </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/buttonView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/fourdot"
             android:text="Send"/>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/finishLayoutView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/thanksMessageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Thank you"/>
+
+        <Button
+            android:id="@+id/finishButtonView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/thanksMessageView"
+            android:layout_centerHorizontal="true"
+            android:text="Ok"/>
+    </RelativeLayout>
 
 </LinearLayout>

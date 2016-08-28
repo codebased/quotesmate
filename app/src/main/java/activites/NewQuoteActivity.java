@@ -2,18 +2,17 @@ package activites;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.imcodebased.quotesmate.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import model.ResponseBase;
 import model.mail.EmailAddress;
 import model.mail.EmailNotificationMessage;
@@ -26,11 +25,20 @@ public class NewQuoteActivity extends BaseToolbarActivity implements View.OnClic
     @BindView(R.id.quote)
     protected EditText quoteView;
 
+    @BindView(R.id.mainLayoutView)
+    protected LinearLayout mainLayoutView;
+
+    @BindView(R.id.finishLayoutView)
+    protected RelativeLayout finishLayoutView;
+
     @BindView(R.id.quoteMetabase)
     protected EditText quoteMetabaseView;
 
     @BindView(R.id.buttonView)
     protected Button buttonView;
+
+    @BindView(R.id.finishButtonView)
+    protected Button finishButtonView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,6 +81,20 @@ public class NewQuoteActivity extends BaseToolbarActivity implements View.OnClic
             @Override
             public void onSuccess(ResponseBase result) {
                 hideProgressDialog();
+                showFinish();
+            }
+
+            private void showFinish() {
+
+                finishLayoutView.setVisibility(View.VISIBLE);
+                mainLayoutView.setVisibility(View.GONE);
+
+                finishButtonView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                });
             }
 
             @Override
