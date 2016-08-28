@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 
 import com.imcodebased.quotesmate.R;
 
@@ -41,7 +42,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     protected SwipeRefreshLayout swipeRefreshView;
 
     @BindView(R.id.empty)
-    protected View emptyListView;
+    protected ViewStub emptyListView;
 
     @Inject
     protected IJsonProvider dataProvider;
@@ -63,6 +64,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        emptyListView.setLayoutResource(getEmptyStateLayout());
         listView.setEmptyStateView(emptyListView);
         listView.setLayoutManager(getLayoutManager());
         listView.addItemDecoration(getItemDecoration());
@@ -190,6 +192,10 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
     public RecyclerView.ItemDecoration getItemDecoration() {
         return new RecyclerView.ItemDecoration() {
         };
+    }
+
+    public int getEmptyStateLayout() {
+        return R.layout.empty_list;
     }
 
     @Override

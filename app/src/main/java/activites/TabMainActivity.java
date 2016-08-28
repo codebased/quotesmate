@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.imcodebased.quotesmate.R;
 
@@ -124,5 +125,13 @@ public class TabMainActivity extends BaseToolbarActivity {
                     }
                 }
         );
+    }
+
+    public void setCurrentTab(int item){
+        viewPagerView.setCurrentItem(item);
+    }
+
+    public void openQuoteList(View v) {
+        setCurrentTab(1);
     }
 }

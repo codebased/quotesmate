@@ -14,6 +14,7 @@ import com.imcodebased.quotesmate.R;
 
 import javax.inject.Inject;
 
+import activites.TabMainActivity;
 import adapters.CustomViewHolder;
 import applications.MainApplication;
 import helpers.IntentUtil;
@@ -99,4 +100,11 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
         int color = ContextCompat.getColor(v.getContext(), res);
         ((ImageView) v).getDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
+
+    @Override
+    public int getEmptyStateLayout() {
+        return R.layout.favourite_empty_list;
+    }
+
+
 }
