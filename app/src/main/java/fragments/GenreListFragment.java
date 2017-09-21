@@ -42,7 +42,7 @@ public class GenreListFragment extends BaseListFragment<Genre> {
 
     @Override
     protected void onPostBindView(CustomViewHolder holder, int position) {
-        holder.getImg().setVisibility(View.GONE);
+//        holder.getLeftImageView().setVisibility(View.GONE);
 
     }
 
@@ -62,7 +62,7 @@ public class GenreListFragment extends BaseListFragment<Genre> {
     }
 
     @Override
-    public void onItemClicked(View v, Genre item) {
+    public void onItemClicked(View v, int position, Genre item) {
         Intent intent = new Intent(getContext(), QuoteListActivity.class);
         intent.putExtra(QuoteListActivity.EXTRA_GENRE, item.getGenre());
         startActivity(intent);

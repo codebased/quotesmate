@@ -89,7 +89,7 @@ public class TabMainActivity extends BaseToolbarActivity {
 
 
     private void setTabIcons() {
-        tabView.getTabAt(0).setIcon(R.drawable.ic_favourite);
+        tabView.getTabAt(0).setIcon(R.drawable.ic_favourite_list);
         tabView.getTabAt(1).setIcon(R.drawable.ic_random);
         tabView.getTabAt(2).setIcon(R.drawable.ic_author);
         tabView.getTabAt(3).setIcon(R.drawable.ic_genre);
@@ -102,29 +102,24 @@ public class TabMainActivity extends BaseToolbarActivity {
 //        tabView.getTabAt(tabView.getSelectedTabPosition()).getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
 //
 //        tabView.getTabAt(tabView.getSelectedTabPosition()).select();
-        tabView.setOnTabSelectedListener(
-                new TabLayout.ViewPagerOnTabSelectedListener(viewPagerView) {
+        tabView.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.selectedTabColor);
+                tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+            }
 
-                    @Override
-                    public void onTabSelected(TabLayout.Tab tab) {
-                        super.onTabSelected(tab);
-                        int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.selectedTabColor);
-                        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
-                    }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.tabColor);
+                tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
+            }
 
-                    @Override
-                    public void onTabUnselected(TabLayout.Tab tab) {
-                        super.onTabUnselected(tab);
-                        int tabIconColor = ContextCompat.getColor(TabMainActivity.this, R.color.tabColor);
-                        tab.getIcon().setColorFilter(tabIconColor, PorterDuff.Mode.SRC_IN);
-                    }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
 
-                    @Override
-                    public void onTabReselected(TabLayout.Tab tab) {
-                        super.onTabReselected(tab);
-                    }
-                }
-        );
+            }
+        });
     }
 
     public void setCurrentTab(int item){

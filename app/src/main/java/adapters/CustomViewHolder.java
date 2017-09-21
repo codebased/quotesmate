@@ -10,23 +10,25 @@ import com.imcodebased.quotesmate.R;
 public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final TextView headerView;
     private final TextView subHeaderView;
-    private final ImageView img;
+    private final ImageView leftImageView;
     private final ItemClickedCallback itemClickedCallback;
+    private final ImageView rightImageView;
 
     public CustomViewHolder(View itemView, ItemClickedCallback itemClickedCallback) {
         super(itemView);
 
         this.headerView = (TextView) itemView.findViewById(R.id.headerView);
         this.subHeaderView = (TextView) itemView.findViewById(R.id.subHeaderView);
-        this.img = (ImageView) itemView.findViewById(R.id.leftImageView);
+        this.leftImageView = (ImageView) itemView.findViewById(R.id.leftImageView);
+        this.rightImageView = (ImageView) itemView.findViewById(R.id.rightImageView);
         this.itemClickedCallback = itemClickedCallback;
         itemView.setOnClickListener(this);
-        this.img.setOnClickListener(this);
-//        this.img.setOnClickListener(new View.OnClickListener() {
+        this.leftImageView.setOnClickListener(this);
+//        this.leftImageView.setOnClickListener(new View.OnClickListener() {
 //            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 //            @Override
 //            public void onClick(View v) {
-//                CustomViewHolder.this.img.getDrawable().setTint(Color.RED);
+//                CustomViewHolder.this.leftImageView.getDrawable().setTint(Color.RED);
 //            }
 //        });
 
@@ -40,8 +42,12 @@ public class CustomViewHolder extends RecyclerView.ViewHolder implements View.On
         return subHeaderView;
     }
 
-    public ImageView getImg() {
-        return img;
+    public ImageView getLeftImageView() {
+        return leftImageView;
+    }
+
+    public ImageView getRightImageView() {
+        return rightImageView;
     }
 
     @Override

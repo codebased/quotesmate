@@ -5,6 +5,7 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -55,6 +56,14 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         View view = inflater.inflate(getLayout(), null);
         ButterKnife.bind(this, view);
 
+        listView.setItemAnimator(new DefaultItemAnimator() {
+
+            @Override
+            public void onAnimationFinished(RecyclerView.ViewHolder viewHolder) {
+                super.onAnimationFinished(viewHolder);
+                listView.updateEmptyState();
+            }
+        });
         return view;
     }
 
@@ -63,7 +72,8 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         super.onViewCreated(view, savedInstanceState);
 
         emptyListView.setLayoutResource(getEmptyStateLayout());
-        listView.setEmptyStateView(emptyListView);
+
+        listView.setEmptyStateView( emptyListView.inflate());
         listView.setLayoutManager(getLayoutManager());
         listView.addItemDecoration(getItemDecoration());
 
@@ -101,7 +111,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
         adapter = new CustomRecyclerAdapter<T>(items, getListItemLayout(), new ItemClickedCallback() {
             @Override
             public void onClick(View v, int position) {
-                onItemClicked(v, items.get(position));
+                onItemClicked(v, position, items.get(position));
 //                startActivity(IntentUtil.createShareIntent(items.get(position).toString()));
             }
         }) {
@@ -162,7 +172,7 @@ public abstract class BaseListFragment<T> extends Fragment implements SwipeRefre
 
     public abstract String getSubHeader(T item);
 
-    public abstract void onItemClicked(View v, T item);
+    public abstract void onItemClicked(View v, int position, T item);
 
     public void onPreInit() {
 

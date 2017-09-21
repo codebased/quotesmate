@@ -38,12 +38,24 @@ public class AuthorListFragment extends BaseListFragment<Author> {
     @Override
     public void initializeData() {
         super.initializeData();
-        mDataLoader.getAllAuthorAsync(this);
+        initializeData(false);
+    }
+
+    public void initializeData(boolean force) {
+        if (items == null || items.size() == 0 || force) {
+            if (force) {
+                onPreInit();
+            }
+
+            mDataLoader.getAllAuthorAsync(this);
+        } else {
+            onPostData();
+        }
     }
 
     @Override
     protected void onPostBindView(CustomViewHolder holder, int position) {
-        holder.getImg().setVisibility(View.GONE);
+//        holder.getLeftImageView().setVisibility(View.GONE);
     }
 
     @Override
@@ -62,7 +74,7 @@ public class AuthorListFragment extends BaseListFragment<Author> {
     }
 
     @Override
-    public void onItemClicked(View v, Author item) {
+    public void onItemClicked(View v, int position, Author item) {
         Intent intent = new Intent(getContext(), QuoteListActivity.class);
         intent.putExtra(QuoteListActivity.EXTRA_AUTHOR, item.getAuthor());
         startActivity(intent);
@@ -71,7 +83,7 @@ public class AuthorListFragment extends BaseListFragment<Author> {
     @Override
     public void onRefresh() {
         super.onRefresh();
-        initializeData();
+        initializeData(true);
     }
 
     @Override

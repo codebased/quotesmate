@@ -1,5 +1,7 @@
 package customviews;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewStub;
 
-public  class CustomRecyclerView extends RecyclerView {
+public class CustomRecyclerView extends RecyclerView {
 
     private View mEmptyStateView;
 
@@ -47,10 +49,23 @@ public  class CustomRecyclerView extends RecyclerView {
     public void updateEmptyState() {
         if (mEmptyStateView != null && getAdapter() != null) {
             boolean showEmptyStateView = getAdapter().getItemCount() == 0;
-            mEmptyStateView.setVisibility(showEmptyStateView ? VISIBLE : GONE);
-            setVisibility(showEmptyStateView ? GONE : VISIBLE);
+            if (showEmptyStateView) {
+                setVisibility(GONE);
+                mEmptyStateView.setVisibility(View.VISIBLE);
+                mEmptyStateView.setAlpha(0.0f);
+                mEmptyStateView.animate().setDuration(500).alpha(1.0f).setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                    }
+
+                }).start();
+            } else {
+                setVisibility(VISIBLE);
+            }
         }
     }
+
     public void setEmptyStateView(View view) {
         this.mEmptyStateView = view;
     }

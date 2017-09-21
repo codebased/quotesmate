@@ -33,6 +33,7 @@ public class QuotesmateApiServiceProvider implements IJsonProvider {
     public void getQuotesJsonAsync(Context context, final DataCallback<List<Quote>> callback) {
 
         Call<Quotes> randomQuoteCall = quoteHttpService.randomize(10);
+
         randomQuoteCall.enqueue(new Callback<Quotes>() {
             @Override
             public void onResponse(Call<Quotes> call, Response<Quotes> response) {

@@ -1,47 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:orientation="horizontal"
-    android:padding="@dimen/onedot">
-
-    <ImageView
-        android:id="@+id/leftImageView"
-        android:layout_width="@dimen/left_image_width"
-        android:layout_height="@dimen/left_image_height"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/twodot"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_heart"
-        android:visibility="gone"/>
+    android:background="@color/white"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="@dimen/quarterdot"
+    card_view:cardMaxElevation="@dimen/quarterdot"
+    card_view:cardPreventCornerOverlap="false">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/twodot"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/headerView"
             style="@style/h1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:text="hey this is a heading"/>
-
+            android:padding="@dimen/onedot"
+            android:text="hey this is a heading" />
 
         <TextView
             android:id="@+id/subHeaderView"
             style="@style/quotes.subheading"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="@dimen/onedot"
-            android:text="hey this is a subheading"/>
+            android:layout_below="@id/headerView"
+            android:layout_margin="@dimen/onedot"
+            android:gravity="center_horizontal"
+            android:text="hey this is a subheading" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/divider"
+            android:orientation="horizontal"
+            android:paddingTop="1dp"
+            android:visibility="gone"
+            android:weightSum="2">
+
+            <ImageView
+                android:id="@+id/leftImageView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#eae8e8"
+                android:gravity="center"
+                android:paddingBottom="@dimen/onedot"
+                android:paddingTop="@dimen/onedot"
+                android:src="@drawable/ic_favourite"
+                android:textColor="@color/black_70" />
+
+            <ImageView
+                android:id="@+id/rightImageView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:layout_weight="1"
+                android:background="#eae8e8"
+                android:gravity="center"
+                android:paddingBottom="@dimen/onedot"
+                android:paddingTop="@dimen/onedot"
+                android:src="@drawable/ic_share"
+                android:textColor="@color/black_70" />
+        </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
+</android.support.v7.widget.CardView>

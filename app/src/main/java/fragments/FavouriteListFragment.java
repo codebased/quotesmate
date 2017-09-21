@@ -48,8 +48,8 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
 
     @Override
     protected void onPostBindView(CustomViewHolder holder, int position) {
-        holder.getImg().setImageResource(R.drawable.ic_delete);
-        setColor(holder.getImg(), R.color.itemColor);
+        holder.getLeftImageView().setImageResource(R.drawable.ic_favourite_inverse);
+//        setColor(holder.getLeftImageView(), R.color.primary);
     }
 
     @Override
@@ -68,12 +68,21 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
     }
 
     @Override
-    public void onItemClicked(View v, Quote item) {
+    public void onItemClicked(View v, int position, Quote item) {
         if (v.getId() == R.id.leftImageView) {
+            items.remove(item);
+            adapter.notifyItemRemoved(position);
             store.deleteQuote(item.getId());
-            onRefresh();
-        } else {
+        } else if (v.getId() == R.id.rightImageView) {
             startActivity(IntentUtil.createShareIntent(item.getQuote()));
+        }
+    }
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        if ( menuVisible && isResumed()){
+            onRefresh();
         }
     }
 
@@ -86,7 +95,7 @@ public class FavouriteListFragment extends BaseListFragment<Quote> {
     @Override
     public void onPreInit() {
         super.onPreInit();
-        this.showProgressDialog("Loading...");
+        this.showProgressDialog("Please wait...");
     }
 
     @Override

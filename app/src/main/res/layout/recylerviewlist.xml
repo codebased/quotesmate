@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.SwipeRefreshLayout android:id="@+id/swipeRefreshView"
-                                              xmlns:android="http://schemas.android.com/apk/res/android"
-                                              android:layout_width="match_parent"
-                                              android:layout_height="match_parent"
-                                              android:orientation="vertical">
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefreshView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/listBackground"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,16 +15,16 @@
         <customviews.CustomRecyclerView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/divider"
-            android:divider="@null"/>
+            android:layout_height="match_parent"
+            android:background="@color/listBackground"
+            android:divider="@null" />
 
         <ViewStub
             android:id="@+id/empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inflatedId="@+id/emptyView"
-            android:layout="@layout/empty_list"/>
+            android:layout="@layout/empty_list" />
     </LinearLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -60,9 +60,9 @@ public class QuoteListFragment extends BaseListFragment<Quote> {
     protected void onPostBindView(CustomViewHolder holder, int position) {
         Quote quote = items.get(position);
         if (store.hasQuote(quote.getId())) {
-            setColor(holder.getImg(), R.color.favouriteItemColor);
+            setColor(holder.getLeftImageView(), R.color.favouriteItemColor);
         } else {
-            setColor(holder.getImg(), R.color.itemColor);
+            setColor(holder.getLeftImageView(), R.color.black_90);
         }
     }
 
@@ -82,24 +82,24 @@ public class QuoteListFragment extends BaseListFragment<Quote> {
     }
 
     @Override
-    public void onItemClicked(View v, Quote item) {
+    public void onItemClicked(View v, int position, Quote item) {
 
         if (v.getId() == R.id.leftImageView) {
             if (store.hasQuote(item.getId())) {
                 store.deleteQuote(item.getId());
-                setColor(v, R.color.itemColor);
+                setColor((ImageView) v, R.color.black_90);
             } else {
                 store.saveFavouriteQuote(item);
-                setColor(v, R.color.favouriteItemColor);
+                setColor((ImageView) v, R.color.favouriteItemColor);
             }
-        } else {
+        } else if (v.getId() == R.id.rightImageView) {
             startActivity(IntentUtil.createShareIntent(item.getQuote()));
         }
     }
 
-    private void setColor(View v, @ColorRes int res) {
+    private void setColor(ImageView v, @ColorRes int res) {
         int color = ContextCompat.getColor(v.getContext(), res);
-        ((ImageView) v).getDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        v.getDrawable().setColorFilter(color, PorterDuff.Mode.SRC_IN);
     }
 
     @Override
